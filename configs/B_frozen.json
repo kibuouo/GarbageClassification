@@ -1,1 +1,0 @@
-{"name": "B_frozen", "strategy": "frozen", "epochs": 20, "batch_size": 32, "seed": 42}

@@ -2,14 +2,6 @@
 __pycache__/
 *.py[cod]
 .DS_Store
-.pytest_cache/
-data/raw/**
-data/train/**
-data/val/**
-data/test/**
-data/split_manifest.json
-checkpoints/**
-results/**
-!results/README.md
-*.pth
-*.pt
+data/
+checkpoints/
+results/
