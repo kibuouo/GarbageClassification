@@ -1,44 +1,44 @@
 # 基于迁移学习的垃圾图像分类与智能识别系统
 
-人工智能课程项目框架：TrashNet 数据检查与固定分层划分 → ResNet-18 三组对比实验 → 测试集评估 → Streamlit 演示。
+人工智能课程项目，使用 ResNet-18 对垃圾图片进行六分类，通过 Streamlit 提供图片上传、摄像头拍照和 Top-3 概率展示。
 
-代码已连接数据准备、训练、评估和推理流程。真实数据、模型权重和实验结果需要后续实际运行产生；仓库不提供预设准确率或示例实验结果。
+仓库已包含 TrashNet 原始图片、固定划分清单和可加载的模型权重。安装依赖后即可启动页面；需要重新训练时，再执行数据划分和训练。
 
-## 目录
+## 1. 项目结构
 
 ```text
 GarbageClassification/
-├── configs/                    # A/B/C 实验参数，JSON
-│   ├── A_scratch.json          # 随机初始化，训练全网络
-│   ├── B_frozen.json           # ImageNet 预训练，仅训练 fc
-│   └── C_finetune.json         # 先训练 fc，再解冻 layer4
-├── garbage_classifier/         # 可复用业务代码
-│   ├── common.py               # 类别、路径、种子、设备、文件输出
-│   ├── config.py               # 配置读取和校验
-│   ├── data.py                 # 共享预处理、DataLoader、划分校验
-│   ├── engine.py               # 训练阶段、早停、最佳模型和曲线
-│   ├── evaluation.py           # 测试集指标、混淆矩阵、误分类记录
-│   ├── inference.py            # CLI 和 Web 共用推理接口
-│   └── comparison.py           # 已完成实验的汇总和可比性检查
-├── models/                     # ResNet-18 构建和参数冻结策略
-├── data/{raw,train,val,test}/   # 原始数据和固定划分，本地生成
-├── checkpoints/<实验名>/       # best_resnet18.pth，本地生成
-├── results/<实验名>/           # 日志、图表和测试指标，本地生成
-├── docs/                       # 架构、实验规约和交付计划
-├── tests/                      # 临时合成图片上的流程检查
-├── prepare_data.py             # 数据检查、固定划分和类别统计
-├── train.py                    # 单组训练
-├── evaluate.py                 # 单组测试评估
-├── run_experiments.py           # 顺序执行 A/B/C 并评估汇总
-├── compare_experiments.py       # 直接汇总已有结果
-├── predict.py                  # 单张图片预测
-├── app.py                      # Streamlit 识别界面
-└── requirements.txt
+├── app.py                      # 页面、图片预处理、模型加载和预测
+├── model.py                    # ResNet-18 网络结构与主干冻结逻辑
+├── train.py                    # 训练、验证及最佳模型保存
+├── split.py                    # 固定随机种子划分数据集
+├── requirements.txt            # Python 依赖
+├── data/
+│   ├── raw/dataset-resized/     # 已提交：六类原始图片
+│   ├── split.csv               # 已提交：图片划分清单
+│   ├── TRASHNET_LICENSE        # 原始数据来源仓库的许可
+│   ├── README.md               # 数据来源与划分说明
+│   └── train/、val/、test/      # 运行 split.py 后生成，不重复提交
+├── checkpoints/
+│   ├── best_resnet18.pth        # 已提交：页面使用的模型权重
+│   └── README.md               # 模型格式及校验信息
+└── results/
+    ├── README.md               # 成果存放说明
+    └── final/                  # 后续存放最终图表、指标和报告
 ```
 
-所有脚本的相对路径均以项目根目录为基准。以下命令在项目根目录执行。
+`results/final/` 在需要保存成果时创建。原始 ZIP、虚拟环境、缓存和临时运行文件不提交。以下命令均在项目根目录执行。
 
-## 1. 开发环境
+## 2. 安装依赖
+
+首次获取项目：
+
+```bash
+git clone https://github.com/kibuouo/GarbageClassification.git
+cd GarbageClassification
+```
+
+创建虚拟环境并安装依赖：
 
 ```bash
 python -m venv .venv
@@ -48,80 +48,83 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-建议使用 Python 3.11 或更新版本及支持它的 PyTorch 版本。CUDA 机器请根据本机驱动和 CUDA 条件安装匹配的 PyTorch。`auto` 设备按 CUDA → Apple MPS → CPU 的顺序选择；命令行可指定 `--device cpu`、`--device mps` 或 `--device cuda`。
+后续运行项目前，先激活已有虚拟环境即可。
 
-## 2. 准备数据
-
-从 [TrashNet 原始项目](https://github.com/garythung/trashnet) 获取数据并自行解压。脚本读取本地文件，不自动下载数据。推荐布局：
-
-```text
-data/raw/dataset-resized/
-├── cardboard/*.jpg
-├── glass/*.jpg
-├── metal/*.jpg
-├── paper/*.jpg
-├── plastic/*.jpg
-└── trash/*.jpg
-```
+## 3. 启动识别页面
 
 ```bash
-python prepare_data.py --source data/raw/dataset-resized
-```
-
-按类别固定种子 42 分成约 70% / 15% / 15%，每类至少需要三张图片；小类别按整数取整，因此比例可能略有偏差。保留原始文件并复制到 `data/train`、`data/val`、`data/test`。检查损坏图片、六类目录和内容重复图片；遇到重复时停止并指出文件，需人工检查。原始目录须直接包含六个类别，图片放在类别目录的第一层。
-
-输出 `data/split_manifest.json`、`results/dataset/class_distribution.csv` 和类别分布图。清单记录文件 SHA-256 与所属分区，训练和评估前检查样本没有被增加、删除或替换。三组实验共用此清单。输出目录非空时停止，避免覆盖已有划分；需要另一版划分可指定新的 `--output`，并同步调整配置中的 `data_dir`。
-
-## 3. 训练
-
-建议先跑冻结实验，确认整条流程：
-
-```bash
-python train.py --config configs/B_frozen.json
-python evaluate.py --checkpoint checkpoints/B_frozen/best_resnet18.pth
-```
-
-再分别执行 A、C，或一次顺序执行三组：
-
-```bash
-python run_experiments.py
-```
-
-迁移学习实验首次运行可能下载 ImageNet 预训练权重。默认 224×224、batch size 32、AdamW、最多 20 轮、早停 patience 7，按验证集 Macro-F1 保存最佳模型。C 的前 5 轮训练 fc，再训练 fc 与 layer4，layer4 使用较低学习率；冻结主干的 BatchNorm 统计量保持不变。`checkpoints/<实验名>/best_resnet18.pth` 同时记录类别顺序、预处理参数、配置与划分标识。
-
-结果按实验名隔离；已有输出时不会覆盖。重跑时复制修改配置或使用 `python train.py --config configs/B_frozen.json --name B_frozen_run2`。
-
-## 4. 评估与实验对比
-
-每个实验在 `results/<实验名>/` 生成：
-
-- `config.json`、`training_history.csv`、`train_summary.json`：参数、逐轮 Loss/Accuracy/Macro-F1、阶段、耗时及最佳轮次。
-- `loss_curve.png`、`accuracy_curve.png`：真实训练曲线。
-- `test_metrics.json`：Accuracy、Macro-F1、Macro-Precision、Macro-Recall 和逐类别报告。
-- `confusion_matrix.png` / `.json`：混淆矩阵和数值。
-- `test_predictions.csv`、`misclassified.csv`：逐图片预测和错误样例索引。
-
-```bash
-python compare_experiments.py results/A_scratch results/B_frozen results/C_finetune
-```
-
-汇总到 `results/comparison/experiment_comparison.csv` 和 `.json`。对比前检查划分、种子、图像尺寸、batch size、最大轮次、早停预算和设备一致。测试集只用于最终评价；模型选择依据验证集。耗时包括每轮训练、验证和日志/模型保存，不包含初始权重下载和训练结束后的绘图；跨设备耗时不可直接比较。
-
-## 5. 智能识别
-
-```bash
-python predict.py path/to/image.jpg --checkpoint checkpoints/B_frozen/best_resnet18.pth
 streamlit run app.py
 ```
 
-页面会加载所选模型，支持图片上传、预览、Top-3 概率、处理耗时、低置信度提示和会话记录 CSV 导出。没有模型时会明确提示准备数据和训练。历史记录保存在当前会话内，长期保存请导出 CSV。只加载本项目训练或可信来源的权重文件。
+打开终端提示的本机地址，通常是 `http://localhost:8501`。
 
-六类是 TrashNet 图像标签，不能直接映射为中国生活垃圾四分类。低置信度提示不是可靠的未知类别检测；真实场景泛化需要另外采集环境照片评估。
+1. 在左侧选择“上传图片”或“摄像头拍照”。
+2. 上传图片，或允许浏览器使用摄像头并拍下照片。
+3. 点击“开始预测”，在右侧查看预测类别和 Top-3 概率。
 
-## 检查和后续交付
+上传支持 JPG、JPEG、PNG 和 WebP。页面使用 CPU 加载 `checkpoints/best_resnet18.pth`，不需要先重新训练，也不会额外保存上传或拍摄的照片。
+
+如果模型文件缺失，预测按钮会禁用，右侧显示明确标注的固定演示数据；该数据与输入图片无关。模型文件损坏或格式不匹配时，页面会显示加载或预测错误。
+
+六类标签为纸板（cardboard）、玻璃（glass）、金属（metal）、纸张（paper）、塑料（plastic）和其他垃圾（trash），不直接对应生活垃圾四分类。真实环境中的背景、光照和拍摄角度可能影响识别结果。
+
+## 4. 数据划分
+
+原始数据来自 [TrashNet](https://github.com/garythung/trashnet)，已放在 `data/raw/dataset-resized/`，共 2,527 张图片。来源、原许可及重复图片说明见 [数据说明](data/README.md)。
+
+需要重新训练且尚未划分数据时，运行：
 
 ```bash
-python -m unittest discover -s tests -v
+python split.py
 ```
 
-检查使用临时合成图片与随机初始化模型，验证数据划分、冻结规则、训练到评估和推理流程；合成数据结果不作为课程实验成绩。架构和实验规范见 [docs/architecture.md](docs/architecture.md)，四周计划及验收项见 [docs/project_plan.md](docs/project_plan.md)。报告、PPT、演示视频和摄像头/Grad-CAM 扩展留到获得真实模型和实验结果后完成。
+脚本保留原始图片，按类别使用固定种子 42，以约 70% / 15% / 15% 复制到训练集、验证集和测试集。跳过六张内容相同但类别标签冲突的图片后，得到：
+
+| 分区 | 目录 | 图片数量 |
+| --- | --- | ---: |
+| 训练集 | `data/train/` | 1,765 |
+| 验证集 | `data/val/` | 378 |
+| 测试集 | `data/test/` | 378 |
+
+`data/split.csv` 记录分区、类别和文件名。相同原始图片与脚本会生成相同划分。任一目标目录已有文件时，脚本会停止；已经划分好的数据直接用于训练，无需重复运行。
+
+当前训练脚本读取训练集和验证集，测试集留作后续最终评估。
+
+## 5. 模型训练
+
+完成数据划分后运行：
+
+```bash
+python train.py
+```
+
+当前训练方式是在 ImageNet 预训练的 ResNet-18 上冻结主干，只更新最后的六分类层。首次训练可能需要下载 ImageNet 权重。设备自动按 CUDA → Apple MPS → CPU 的顺序选择。
+
+| 配置 | 当前值 |
+| --- | --- |
+| 图片尺寸 | 224 × 224 |
+| 训练轮数 | 5 |
+| Batch size | 16 |
+| 优化器 | AdamW |
+| 学习率 | 0.001 |
+| 损失函数 | 交叉熵 |
+| 模型保存依据 | 验证集准确率提升 |
+
+训练集使用随机水平翻转，验证集不做随机增强，两者均使用 ImageNet 标准化。训练轮数、批次大小和学习率在 `train.py` 顶部的 `EPOCHS`、`BATCH_SIZE`、`LEARNING_RATE` 中修改；当前脚本没有命令行配置参数。
+
+终端每轮输出训练和验证的损失、准确率，最佳模型保存到 `checkpoints/best_resnet18.pth`。每次启动训练都会重新加载 ImageNet 参数，不会从现有分类模型续训；保存时会覆盖同名权重。需要保留旧模型时，请先备份。
+
+当前尚未实现独立测试集评估、对比实验、训练曲线和混淆矩阵自动生成。验证准确率不能作为测试集成绩；课程报告中的指标应以实际计算结果为准，最终成果可放入 `results/final/`。
+
+## 6. 模型与预测约定
+
+`model.py` 定义网络结构和前向计算，`train.py` 负责更新参数，`app.py` 加载训练结果进行预测。直接运行 `model.py` 不会开始训练。
+
+模型权重包含 `model_state` 和 `classes` 两个字段，类别顺序由训练集文件夹名称确定。页面按权重中的顺序解释输出，使用 RGB、224 × 224 和 ImageNet 标准化预处理图片，再对模型输出应用 Softmax，取概率最高的三个类别。
+
+模型格式和当前权重的校验信息见 [模型说明](checkpoints/README.md)。权重未保存实际训练轮次和准确率，不能仅凭权重文件推断这些成绩。
+
+## 7. 实时摄像头功能 TODO
+
+- [ ] 验证真实摄像头的开始、停止、连续推理性能和浏览器兼容性。
+- [ ] 完成验证后开放实时识别入口：实现代码和 `streamlit-webrtc` 依赖已保留，`app.py` 中的 `ENABLE_LIVE_CAMERA` 当前为 `False`，前端保持拍照模式。
