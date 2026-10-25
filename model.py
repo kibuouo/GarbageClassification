@@ -1,9 +1,42 @@
 """ResNet-18 垃圾分类模型：定义结构和前向计算，不在这里训练。"""
 
+from http.client import IncompleteRead
+from pathlib import Path
+import time
+
 import torch
 from torch import nn
 from torchvision.models import ResNet18_Weights
 from torchvision.models.resnet import BasicBlock, ResNet
+
+
+def load_pretrained_weights():
+    """复用 Torch 缓存；网络中断时重试，失败后说明如何手动缓存。"""
+    weights = ResNet18_Weights.DEFAULT
+    attempts = 3
+    for attempt in range(1, attempts + 1):
+        try:
+            return weights.get_state_dict(
+                progress=True, check_hash=True, map_location="cpu"
+            )
+        except (OSError, IncompleteRead) as error:
+            if attempt == attempts:
+                cache_file = (
+                    Path(torch.hub.get_dir()) / "checkpoints" / weights.url.rsplit("/", 1)[-1]
+                )
+                raise RuntimeError(
+                    f"预训练权重下载失败，已尝试 {attempts} 次。\n"
+                    f"请检查网络后重新运行，或手动下载：{weights.url}\n"
+                    f"将完整文件保存到：{cache_file}\n"
+                    "权重就绪后重新运行 python train.py。"
+                ) from error
+            delay = 2 ** (attempt - 1)
+            print(
+                f"预训练权重下载中断（{attempt}/{attempts}）：{error}。"
+                f"{delay} 秒后重试。",
+                flush=True,
+            )
+            time.sleep(delay)
 
 
 # ResNet-18 由四个阶段的残差模块组成，适合小型图像分类任务。
@@ -27,10 +60,7 @@ class GarbageClassifier(ResNet):
         # 先保留 ImageNet 的 1000 类输出，才能完整加载其预训练参数。
         super().__init__(block=BasicBlock, layers=[2, 2, 2, 2], num_classes=1000)
         if pretrained:
-            weights = ResNet18_Weights.DEFAULT.get_state_dict(
-                progress=True, check_hash=True
-            )
-            self.load_state_dict(weights)
+            self.load_state_dict(load_pretrained_weights())
 
         # 主干提取 512 维特征，新的分类层输出 num_classes 个分数。
         self.fc = nn.Linear(self.fc.in_features, num_classes)

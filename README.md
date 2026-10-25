@@ -37,6 +37,8 @@ python -m pip install -r requirements.txt
 
 Windows PowerShell 将激活命令替换为 `.venv\Scripts\Activate.ps1`。
 
+
+
 **启动页面**
 
 ```bash
@@ -61,9 +63,3 @@ python train.py
 训练和验证的损失、准确率输出到终端，按验证准确率保存最佳模型到 `checkpoints/best_resnet18.pth`。重新训练会覆盖此文件，请按需备份；训练完成后重新启动页面使用新模型。当前未提供测试集评估、对比实验和自动绘图功能。
 
 ## 实时摄像头功能 TODO
-
-当前默认使用拍照识别。实时识别代码及依赖已保留，`app.py` 中的 `ENABLE_LIVE_CAMERA = False` 隐藏了前端入口。
-
-- [ ] 验证真实摄像头的开始、停止及连续识别性能。
-- [ ] 检查浏览器兼容性和摄像头权限处理。
-- [ ] 完成验证后开放实时识别入口。

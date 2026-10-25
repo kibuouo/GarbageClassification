@@ -15,7 +15,7 @@ DATA = ROOT / "data"
 CHECKPOINT = ROOT / "checkpoints" / "best_resnet18.pth"
 
 # 先用少量轮次跑通流程，后续再调整。
-EPOCHS = 5
+EPOCHS = 30
 BATCH_SIZE = 16
 LEARNING_RATE = 0.001
 
