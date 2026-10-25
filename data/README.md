@@ -1,27 +1,3 @@
-# 课程项目数据
-
-本仓库提供一份 TrashNet 缩小版原始图片，便于组员在相同数据上协作和复现训练。
-
-## 来源
-
-- 原始项目：[garythung/trashnet](https://github.com/garythung/trashnet)，作者 Gary Thung、Mindy Yang。
-- 本地目录：`raw/dataset-resized/`。
-- 原始下载文件：[dataset-resized.zip](https://raw.githubusercontent.com/garythung/trashnet/master/data/dataset-resized.zip)。
-- 原始 ZIP 的 Git blob SHA：`4184b4e9d359026a49e5d34ac2cead944f53be88`。
-- 原始 ZIP 的 SHA-256：`0bf472790f8b20e5c950d5b5012a9d38af0d3392efd65f8ce171334fc16b07c2`。
-- 原始仓库许可随附于 [TRASHNET_LICENSE](TRASHNET_LICENSE)，请保留来源和许可说明。
-
-图片保持原始内容，未为本项目重新编码。原始 ZIP 不重复放进 Git。
-
-| 类别文件夹 | 中文名称 | 原始图片数量 |
-| --- | --- | ---: |
-| cardboard | 纸板 | 403 |
-| glass | 玻璃 | 501 |
-| metal | 金属 | 410 |
-| paper | 纸张 | 594 |
-| plastic | 塑料 | 482 |
-| trash | 其他垃圾 | 137 |
-| 合计 | | 2,527 |
 
 ## 固定划分
 
