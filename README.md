@@ -12,16 +12,24 @@ GarbageClassification/
 ├── split.py           # 数据集划分
 ├── requirements.txt   # 依赖
 ├── README.md
-├── data/              # 本地预留：后续放数据
-├── checkpoints/       # 本地预留：后续放训练模型
-└── results/           # 本地预留：后续放运行结果
+├── data/
+│   ├── raw/dataset-resized/  # 已提交：TrashNet 原始图片
+│   ├── split.csv            # 已提交：固定划分清单
+│   ├── TRASHNET_LICENSE     # 原始数据来源仓库的许可
+│   └── README.md            # 数据来源与划分说明
+├── checkpoints/
+│   ├── best_resnet18.pth    # 已提交：当前可用模型
+│   └── README.md           # 模型格式与校验信息
+└── results/                # 成果说明，最终图表/报告放 final/
 ```
 
-`data/`、`checkpoints/`、`results/` 是本地目录，不上传到 Git；从仓库克隆后按需要创建。
+仓库包含运行页面所需的代码和模型，以及复现训练所需的一份原始数据。`data/train/`、`data/val/`、`data/test/` 由划分脚本生成，不重复提交；原始 ZIP、虚拟环境和缓存也不提交。
 
 ## 启动页面
 
 ```bash
+git clone https://github.com/kibuouo/GarbageClassification.git
+cd GarbageClassification
 python -m venv .venv
 source .venv/bin/activate
 # Windows PowerShell 使用 .venv\Scripts\Activate.ps1
@@ -32,6 +40,27 @@ streamlit run app.py
 页面仅保留图片输入与预览、预测结果、Top-3 概率。左侧选择“上传图片”或“摄像头拍照”，取得图片后点击“开始预测”，右侧查看结果。
 
 摄像头使用方式：在本机打开 `http://localhost:8501`，切换到“摄像头拍照”，允许浏览器访问摄像头，拍下照片后点击“开始预测”。照片不会额外保存到项目目录。
+
+仓库已提供 `checkpoints/best_resnet18.pth`，安装依赖后可以直接打开页面进行识别，无需先下载数据或重新训练。
+
+## 复现数据划分和训练
+
+原始数据来自 [TrashNet](https://github.com/garythung/trashnet)，位于 `data/raw/dataset-resized/`，共 2,527 张、六个类别。来源与原许可见 [数据说明](data/README.md) 和 [TRASHNET_LICENSE](data/TRASHNET_LICENSE)。
+
+首次克隆并安装依赖后，可以运行：
+
+```bash
+python split.py
+python train.py
+```
+
+`split.py` 使用固定种子 42，在每个类别内随机划分。跳过六张内容重复且标签冲突的图片后，生成训练集 1,765 张、验证集 378 张、测试集 378 张，并写出 `data/split.csv`。相同原始图片和脚本应得到仓库中同一份划分清单。目标目录已有文件时，脚本会停止以避免混合不同划分；已经完成划分的组员直接运行 `python train.py` 即可。
+
+`train.py` 默认使用 ImageNet 预训练的 ResNet-18，冻结主干，训练分类层 5 轮，batch size 16、学习率 0.001，优先使用 CUDA、其次 Apple MPS、最后 CPU。首次重新训练可能下载 ImageNet 权重，需要网络。预处理和类别顺序与页面一致；不同设备和软件版本可能产生数值差异。
+
+每轮在验证集上检查准确率，保存最佳模型到 `checkpoints/best_resnet18.pth`。重新训练会更新此文件，原有版本可以通过 Git 历史取回。测试集留作最终评估；验证准确率不等于测试集准确率。
+
+最终图表、报告和指标可放在 `results/final/` 后提交，暂存日志等其他运行产物保持本地。当前仓库没有预填实验图表或准确率。
 
 ## TODO
 
@@ -46,9 +75,9 @@ streamlit run app.py
 
 代码带中文注释。数据准备和训练脚本独立运行，页面加载已有权重进行预测。
 
-## 后续模型约定
+## 模型格式
 
-后续训练将模型保存到 `checkpoints/best_resnet18.pth`，内容包含：
+当前模型和后续训练均使用 `checkpoints/best_resnet18.pth`，内容包含：
 
 - `model_state`：ResNet-18 权重。
 - `classes`：与输出层编号一致的类别名称列表。

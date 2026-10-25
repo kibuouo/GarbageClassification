@@ -2,6 +2,21 @@
 __pycache__/
 *.py[cod]
 .DS_Store
-data/
-checkpoints/
-results/
+# 提交一份原始数据和划分清单；训练/验证/测试目录由 split.py 生成。
+data/*
+!data/README.md
+!data/TRASHNET_LICENSE
+!data/split.csv
+!data/raw/
+data/raw/*
+!data/raw/dataset-resized/
+
+# 提交可直接演示的模型，其他临时权重不进入仓库。
+checkpoints/*
+!checkpoints/README.md
+!checkpoints/best_resnet18.pth
+
+# 最终成果可放入 final/ 提交，其他运行产物保留在本地。
+results/*
+!results/README.md
+!results/final/
