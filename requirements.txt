@@ -3,3 +3,4 @@ torchvision>=0.16
 Pillow>=10.0
 streamlit>=1.41
 streamlit-webrtc==0.79.0
+matplotlib>=3.8

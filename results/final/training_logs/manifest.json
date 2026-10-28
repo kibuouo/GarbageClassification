@@ -1,0 +1,23 @@
+{
+  "run_id": "ppt_training",
+  "files": {
+    "training_logs/A/config.json": "eb5c0e42f959a4a1ecc8945416044cbe30e302215c6e864be2e877189c63fce7",
+    "training_logs/A/metadata.json": "4b6167f3b781b6781f76b0e85fa941a00edb76bce83d679dbfd51f147d455b01",
+    "training_logs/A/history.csv": "39d27525bebbc54c1f07eec7b6321c661b2d63bd4441757d7b0e118f6b81533b",
+    "training_logs/A/history.json": "6f98468e955cdc67cd203b98ac16c73390a60dfbe6aa326d8fabf29a653eca68",
+    "training_logs/A/status.json": "c56cd46398407d7fc57a6c44d78e0c69958d33cc9eb937b37478f1de6a5ba1de",
+    "training_logs/A/train.log": "7dd2f1b3b25b6b277c81034cfe7d20661796841f898bca55fc02d3249817c5d2",
+    "training_logs/B/config.json": "3d910117a5eb69a5336cdb2476f83df770408e7aac55a6b29cbaab00c6f6a096",
+    "training_logs/B/metadata.json": "3d72d97b43a2fb43eb95b32789c9454c9ea33102143d54ebb56c3dffb11e78a2",
+    "training_logs/B/history.csv": "51e51555ab39210e55d0d42f6a8be9fd59c7d5183a016bad43aa3b22e08d2f99",
+    "training_logs/B/history.json": "beee491a689316c129d5bcf9b4e5a6d9228ecc6f99b7bb80e4a9d01695efcc62",
+    "training_logs/B/status.json": "5b74bdde40cd8ce71965f7de9df0e95e0e10dbb897b8dec30324ce9691922a11",
+    "training_logs/B/train.log": "83e04e2ba6c44267a4d33865cc0d1cefc2a5997d182cd29462df7f7b87189a24",
+    "training_logs/C/config.json": "39634f36a8c7071f75cc3bd22c18acbe3f5242a19c172f01ecabad39233f73c6",
+    "training_logs/C/metadata.json": "8887483702e9c4243eb192610d161909ebd6bc53b3bcc29ecf9e3a155ea373ee",
+    "training_logs/C/history.csv": "bd750ef5a20cf1324fe11c2725c7e63378401a05165c18ef70c61c4e8ea7a0cd",
+    "training_logs/C/history.json": "c66fa49f7e8988a42ed069c95e08185b46506a64ec2f03f86d473c9bb8959d0a",
+    "training_logs/C/status.json": "8b4f8446a37dc1e1de66bca9c97da71d382f26add3b7a24ec2b8123fb699e0ee",
+    "training_logs/C/train.log": "9597299bfb4cc330c3f465399515f2a90dd50bf1b6457bd62ed572bc99e9a7b0"
+  }
+}

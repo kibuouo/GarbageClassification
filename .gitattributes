@@ -1,0 +1,4 @@
+# Preserve generated result bytes so archived SHA-256 values survive checkout.
+results/final/** -text whitespace=cr-at-eol
+# Matplotlib SVG paths include insignificant trailing spaces.
+results/final/*.svg whitespace=cr-at-eol,-blank-at-eol
