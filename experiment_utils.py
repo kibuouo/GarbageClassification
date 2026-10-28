@@ -34,6 +34,54 @@ def sha256(path):
     return digest.hexdigest()
 
 
+def manifest_fingerprint(path):
+    """清单身份使用 LF 字节；保留 BOM，兼容已有 LF 原始字节哈希。"""
+    raw = Path(path).read_bytes()
+    canonical = raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return {
+        "manifest_sha256": hashlib.sha256(canonical).hexdigest(),
+        "manifest_hash_algorithm": "sha256-lf-v1",
+        "manifest_raw_sha256": hashlib.sha256(raw).hexdigest(),
+    }
+
+
+def verify_data_identity(record, audit, manifest=None):
+    """旧记录仅允许当前清单重建的 LF/CRLF 哈希，始终核对图片与划分综合哈希。"""
+    if record.get("dataset_sha256") != audit["dataset_sha256"]:
+        raise ValueError("dataset_sha256 与记录不同，拒绝混用数据。")
+    algorithm = record.get("manifest_hash_algorithm")
+    if algorithm not in (None, "sha256-lf-v1"):
+        raise ValueError(f"不支持的清单哈希算法：{algorithm}")
+    if record.get("manifest_sha256") == audit["manifest_sha256"]:
+        return
+    if algorithm is not None:
+        raise ValueError("manifest_sha256 与记录不同，拒绝混用划分。")
+    path = Path(manifest) if manifest is not None else ROOT / "data/split.csv"
+    canonical = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    if hashlib.sha256(canonical).hexdigest() != audit["manifest_sha256"]:
+        raise ValueError("当前清单与数据审计不一致，请重新审计。")
+    legacy_hashes = {hashlib.sha256(data).hexdigest() for data in
+                     (canonical, canonical.replace(b"\n", b"\r\n"))}
+    if record.get("manifest_sha256") not in legacy_hashes:
+        raise ValueError("manifest_sha256 与记录不同，拒绝混用划分。")
+
+
+SOURCE_FILES = ("train.py", "model.py", "evaluate.py", "experiment_utils.py", "feature_cache.py")
+
+
+def snapshot_source(run_dir):
+    """保存实际执行源码与原始/LF 哈希，避免仅有哈希却无法取回源码。"""
+    source = Path(run_dir) / "source"
+    source.mkdir()
+    hashes, normalized = {}, {}
+    for name in SOURCE_FILES:
+        data = (ROOT / name).read_bytes()
+        (source / name).write_bytes(data)
+        hashes[name] = hashlib.sha256(data).hexdigest()
+        normalized[name] = hashlib.sha256(data.replace(b"\r\n", b"\n")).hexdigest()
+    return {"code_sha256": hashes, "code_lf_sha256": normalized}
+
+
 def load_config(path):
     config = json.loads(Path(path).read_text(encoding="utf-8"))
     validate_config(config)
@@ -85,7 +133,7 @@ def audit_manifest():
         dataset_digest.update(f"{split}/{label}/{filename}:{digest}\n".encode())
     if any(n == 0 for group in counts.values() for n in group.values()):
         raise ValueError("每个划分都必须包含全部六个类别。")
-    return {"manifest_sha256": sha256(manifest), "dataset_sha256": dataset_digest.hexdigest(), "counts": counts}
+    return {**manifest_fingerprint(manifest), "dataset_sha256": dataset_digest.hexdigest(), "counts": counts}
 
 
 def limit_dataset(dataset, maximum):

@@ -1,14 +1,17 @@
-# 已训练模型
+# 已验证的页面模型
 
-`best_resnet18.pth` 是当前页面可直接加载的 ResNet-18 六分类权重。它随代码提交，组员安装依赖后即可演示。
+`best_resnet18.pth` 与 `results/final/checkpoints/C/best.pth` 完全相同，来自 `audit_retrain_20261028` 的 C 组最佳检查点，按验证集准确率选择。
 
-- 文件大小：44,792,971 字节。
-- 文件版本请以当前权重的 SHA-256 为准，可用 PowerShell `Get-FileHash checkpoints/best_resnet18.pth -Algorithm SHA256` 查看；本次 A/B/C 结果提交没有更新页面权重。
-- 权重字段：`model_state`。
-- 类别字段：`classes`，按 `cardboard, glass, metal, paper, plastic, trash` 排列。
-- 输入：RGB 图片，224×224，使用与 `app.py` 相同的 ImageNet 标准化参数。
-- 输出：六个类别分数，页面使用 Softmax 转换为概率后显示 Top-3。
+- 文件大小：44,795,851 字节。
+- SHA-256：`ff863443824f79e8c3b56d000c9a5eaaabe1beee1e143c7a3b50cfc2bf92ed5b`。
+- 最佳轮次：20；验证准确率：90.74%。
+- 固定测试集：378 张，准确率 92.86%，Macro-F1 0.9257。
+- 参数字段：`model_state`；来源字段：`training_metadata`，包含配置、数据身份、实际训练源码哈希与初始化权重哈希。
+- 类别：`cardboard, glass, metal, paper, plastic, trash`。
+- 输入：RGB、224×224、ImageNet 标准化，与 `app.py` 一致；输出 Softmax Top-3。
 
-模型结构由 `model.py` 定义。现有页面权重仅保存参数和类别映射，课程报告中的轮次与指标应以实际训练记录为依据。新版 `train.py` 支持 A/B/C 实验，分别将最佳模型保存到 `results/runs/<实验>/<run-id>/best.pth`，并记录配置、数据哈希、日志和验证指标；默认不会覆盖本目录中的页面权重。
+页面仅在权重 SHA-256 与正式测试记录吻合时显示准确率；替换成其他权重后会显示待验证的演示模型说明。固定测试集准确率不等于每张上传图片都能达到同样表现。
 
-选择新的页面模型时，先备份现有权重，再将已确认的实验 `best.pth` 复制为本目录的 `best_resnet18.pth`，并更新本说明中的文件大小与 SHA-256。仅在需要共享新的可用模型时提交权重更新，避免提交各轮中间文件。
+原页面权重实际大小为 **44,794,315 字节**，SHA-256 为 `7e95464ce6928e68b9730d202f7fd372c7016a22775d60a5f367f5dd9888a3d2`，缺少完整训练来源；本机备份保存在 `checkpoints/legacy/`（不提交）。旧 C 组的 92.86% 仅为旧实验历史记录，不作为该旧页面模型的准确率。
+
+三组已交付权重、源码及日志均在 `results/final/`。运行 `python verify_results.py` 可重新加载所有最佳权重并验证全部测试预测。

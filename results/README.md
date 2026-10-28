@@ -1,15 +1,27 @@
 # 课程成果
 
-将需要随项目交付的最终图表、指标文件和报告放入 `results/final/` 并提交到 Git。
+当前正式交付为 `audit_retrain_20261028`：三组从 ImageNet 初始化，按验证集选模后在同一份 378 张固定测试图片上评估。
 
-本次三组独立测试结果：A 82.54%、B 85.45%、C 92.86%，使用相同的 378 张测试图片。`final/accuracy_comparison.png` 和 `.svg` 可用于演示，`comparison_notes.md` 说明方法和限制；`training_logs/<A|B|C>/` 保存对应的配置、元数据、训练日志、逐轮历史和完成状态，不含模型及优化器检查点。`training_logs/manifest.json` 记录归档文件的 SHA-256。
+| 实验 | 训练轮数 | 最佳轮次 | 测试准确率 | Macro-F1 |
+|---|---:|---:|---:|---:|
+| A | 5 | 5 | 82.54% | 0.8115 |
+| B | 19 | 14 | 85.45% | 0.8519 |
+| C | 20 | 20 | 92.86% | 0.9257 |
 
-仓库中的图表可直接查看。重新执行 `plot_results.py` 需要完整的本地 `results/runs/` 目录；新克隆仓库可先按照根目录 README 训练并评估，生成新的运行记录和图表。
+- `final/checkpoints/<A|B|C>/best.pth`：三组实际最佳权重，SHA-256 与对比表一致。
+- `final/training_logs/<A|B|C>/`：配置、元数据、逐轮历史、训练日志、完成状态及 `source/` 实际源码。
+- `final/comparison.csv`、`test_metrics.json`：汇总与全部逐图预测。
+- `final/artifact_manifest.json`：交付文件大小及 SHA-256。
+- `final/evaluation_verification.json`：重新加载归档权重，对全部测试预测、混淆矩阵和指标独立复算的结果。
+- `final/data_identity_verification.json`：旧 LF/CRLF 元数据兼容验证摘要。
+- `final/environment.json`：本次环境版本。
 
-例如：训练曲线、混淆矩阵、最终测试指标、误分类分析、课程报告。其他临时运行文件默认忽略。
+新克隆仓库可运行 `python verify_results.py`，无需本地 `runs/` 即可复算全部测试结果。`python plot_results.py --archived` 从交付日志重绘到 `replotted/`，不改写交付图表。
 
-`train.py` 将 A/B/C 的日志、配置、检查点和逐轮指标写入 `runs/<实验>/<run-id>/`。`evaluate.py --experiments A B C` 生成各运行的测试指标，并汇总为 `final/test_metrics.json` 和 `final/comparison.csv`；`plot_results.py` 生成 `final/training_curves.png`、`final/confusion_matrix.png`。只有完成真实训练和评估后才会生成正式成果文件。使用方式见项目根目录 README。
+训练流程仍将每轮恢复点和优化器写入 `runs/<实验>/<run-id>/`，默认不提交中间检查点。训练、评估、绘图后运行 `python archive_results.py --promote` 可保存三组最佳权重与源码，并按验证准确率选择页面模型；此前页面权重会备份到 `checkpoints/legacy/`。
 
-`final/validation_baseline.json`、`final/finetuning_history.json` 属于先前的探索性验证，不是 A/B/C 结果。原始随附权重缺少训练来源记录，不能将这些验证指标写成独立测试准确率。
+旧 `ppt_training` 原权重未找回；原始结果、图表、日志与协议逐字节保留在 `archive/ppt_training/`，五份训练源码也已从 Git 精确恢复。旧指标作为历史记录，不冒充本次模型文件。较早的 `validation_baseline.json`、`finetuning_history.json` 也在该历史目录。
 
-`smoke/` 仅保存小样本开发检查，图表有 SMOKE TEST 标记，默认排除在正式汇总之外。`legacy/train_before_experiments.py` 是重构前的训练脚本备份。
+`smoke_crossplatform/` 仅为换行兼容和恢复流程的小样本检查，不属于正式实验结果。
+
+本次使用同一固定划分与种子复核旧结果，没有依据测试表现重新调参；不能据此声称多次随机种子运行或新盲测都能达到同样表现。

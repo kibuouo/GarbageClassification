@@ -64,7 +64,7 @@ for label in CLASSES:
 
 # 保存划分清单，之后可以查看每张图片分到了哪里。
 with (DATA / "split.csv").open("w", newline="", encoding="utf-8-sig") as file:
-    writer = csv.writer(file)
+    writer = csv.writer(file, lineterminator="\n")
     writer.writerow(["split", "class", "filename"])
     writer.writerows(records)
 

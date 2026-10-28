@@ -1,0 +1,35 @@
+{
+  "verified_at": "2026-10-28T20:12:15+08:00",
+  "method": "Playwright CLI Chrome on local Streamlit, plus Streamlit AppTest",
+  "desktop_control": "Native Computer Use pipe unavailable; browser automation used after explicit progress notice.",
+  "checkpoint_sha256": "ff863443824f79e8c3b56d000c9a5eaaabe1beee1e143c7a3b50cfc2bf92ed5b",
+  "checks": {
+    "legacy_model_has_no_unverified_accuracy": true,
+    "verified_C_caption_matches_report_and_current_checkpoint": true,
+    "empty_input_disables_prediction": true,
+    "upload_predict_top3_with_C": {
+      "file": "data/raw/dataset-resized/paper/paper1.jpg",
+      "predicted": "paper"
+    },
+    "corrupt_jpg_error_and_disabled_prediction": true,
+    "missing_model_demo_fallback_AppTest": true,
+    "camera_upload_source_switch": true,
+    "simulated_camera_capture_predict_with_C": {
+      "predicted": "paper",
+      "top3_percent_display": [
+        97.7,
+        1.9,
+        0.4
+      ]
+    },
+    "clear_photo_removes_stale_result_and_disables_prediction": true,
+    "accuracy_comparison_training_curves_and_confusion_matrix_visually_checked": true,
+    "archived_replot_preserves_original_artifact_hashes": true
+  },
+  "camera_scope": "Browser fake video source; physical webcam and disabled live-video mode not tested.",
+  "local_screenshots": [
+    "output/playwright/legacy-model-prediction.png",
+    "output/playwright/invalid-image.png",
+    "output/playwright/verified-c-model.png"
+  ]
+}

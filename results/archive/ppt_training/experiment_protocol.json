@@ -1,0 +1,107 @@
+{
+  "recorded_at": "2026-10-25T16:04:44+08:00",
+  "run_id": "ppt_training",
+  "configs": {
+    "A": {
+      "name": "A",
+      "description": "5 epoch frozen-backbone baseline",
+      "epochs": 5,
+      "mode": "head",
+      "warmup_epochs": 0,
+      "head_lr": 0.001,
+      "layer4_lr": 0.0001,
+      "weight_decay": 0.01,
+      "batch_size": 4,
+      "accumulation_steps": 4,
+      "patience": 0,
+      "min_delta": 0.0,
+      "seed": 42,
+      "pretrained": true,
+      "threads": 2,
+      "augmentation": "horizontal_flip",
+      "freeze_bn_stats": true,
+      "cache_features": true
+    },
+    "B": {
+      "name": "B",
+      "description": "20 epoch frozen-backbone control",
+      "epochs": 20,
+      "mode": "head",
+      "warmup_epochs": 0,
+      "head_lr": 0.001,
+      "layer4_lr": 0.0001,
+      "weight_decay": 0.01,
+      "batch_size": 4,
+      "accumulation_steps": 4,
+      "patience": 5,
+      "min_delta": 0.0,
+      "seed": 42,
+      "pretrained": true,
+      "threads": 2,
+      "augmentation": "horizontal_flip",
+      "freeze_bn_stats": true,
+      "cache_features": true
+    },
+    "C": {
+      "name": "C",
+      "description": "20 epoch layer4 fine-tuning after 3 warmup epochs",
+      "epochs": 20,
+      "mode": "layer4",
+      "warmup_epochs": 3,
+      "head_lr": 0.001,
+      "layer4_lr": 0.0001,
+      "weight_decay": 0.01,
+      "batch_size": 4,
+      "accumulation_steps": 4,
+      "patience": 5,
+      "min_delta": 0.0,
+      "seed": 42,
+      "pretrained": true,
+      "threads": 2,
+      "augmentation": "horizontal_flip",
+      "freeze_bn_stats": true,
+      "cache_features": true
+    }
+  },
+  "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+  "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
+  "counts": {
+    "train": {
+      "cardboard": 283,
+      "glass": 348,
+      "metal": 287,
+      "paper": 416,
+      "plastic": 336,
+      "trash": 95
+    },
+    "val": {
+      "cardboard": 60,
+      "glass": 75,
+      "metal": 61,
+      "paper": 89,
+      "plastic": 72,
+      "trash": 21
+    },
+    "test": {
+      "cardboard": 60,
+      "glass": 75,
+      "metal": 61,
+      "paper": 89,
+      "plastic": 72,
+      "trash": 21
+    }
+  },
+  "initialization": "ImageNet ResNet18_Weights.DEFAULT",
+  "imagenet_weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+  "best_epoch_rule": "Highest validation accuracy; first epoch retained on ties",
+  "selected_experiment_rule": "Highest validation accuracy across A/B/C; earlier letter retained on ties",
+  "test_rule": "Evaluate each selected best.pth on all 378 fixed test images after training; do not retune using test metrics",
+  "feature_cache": "Only immutable backbone features of original/flip training views and validation images; never test images",
+  "code_sha256": {
+    "train.py": "d6f50e3a8c3442f008a68018bd0b27c4b9cd55ea5e2b2c067d93b0a183a7fe5f",
+    "model.py": "7b9152c6949dcbf9a9b5d963f58a1d457966bcc9e572c2fe56afc8be746bf392",
+    "evaluate.py": "862d4ea459e8fc9a101c555873ea45b0716345c528a68a8c47c8363ce073ae6f",
+    "feature_cache.py": "69a3fd202e5f9f515aa8a0e7e45e5eceb17919163ec1855af584caa44514846e",
+    "experiment_utils.py": "58535ae6cfc68f4c531d42c0a99648d7da2eb93da9cc3f25deff359de35b194d"
+  }
+}

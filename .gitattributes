@@ -2,3 +2,8 @@
 results/final/** -text whitespace=cr-at-eol
 # Matplotlib SVG paths include insignificant trailing spaces.
 results/final/*.svg whitespace=cr-at-eol,-blank-at-eol
+# Fixed manifest and source identities must survive Windows/macOS checkout.
+data/split.csv text eol=lf
+*.py text eol=lf
+results/archive/** -text whitespace=cr-at-eol
+results/archive/**/*.svg whitespace=cr-at-eol,-blank-at-eol

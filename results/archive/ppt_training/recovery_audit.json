@@ -1,0 +1,70 @@
+{
+  "checked_at": "2026-10-28T19:45:34+08:00",
+  "weights_found": false,
+  "searched": [
+    "D:/GarbageClassification",
+    "C:/Users/kiko/OneDrive/GarbageClassification",
+    "C:/Users/kiko/Downloads"
+  ],
+  "original_model_git_commit": "dddecc6",
+  "original_model_sha256": "7b9152c6949dcbf9a9b5d963f58a1d457966bcc9e572c2fe56afc8be746bf392",
+  "current_model_git_commit": "255c31f",
+  "current_model_sha256": "7fc6aa259d6cd6ec67f9d53bb7184ef9aea39050de8a6ae682f472d694dff461",
+  "resolution": "Original model source recovered exactly from Git; A/B/C weights absent locally and in synced project. Retrain all experiments under a new run ID; keep old metrics historical.",
+  "old_page_size_bytes": 44794315,
+  "old_page_sha256": "7e95464ce6928e68b9730d202f7fd372c7016a22775d60a5f367f5dd9888a3d2",
+  "data_audit": {
+    "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+    "manifest_hash_algorithm": "sha256-lf-v1",
+    "manifest_raw_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+    "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
+    "counts": {
+      "train": {
+        "cardboard": 283,
+        "glass": 348,
+        "metal": 287,
+        "paper": 416,
+        "plastic": 336,
+        "trash": 95
+      },
+      "val": {
+        "cardboard": 60,
+        "glass": 75,
+        "metal": 61,
+        "paper": 89,
+        "plastic": 72,
+        "trash": 21
+      },
+      "test": {
+        "cardboard": 60,
+        "glass": 75,
+        "metal": 61,
+        "paper": 89,
+        "plastic": 72,
+        "trash": 21
+      }
+    }
+  },
+  "recovered_training_sources": {
+    "train.py": {
+      "commit": "9e27eb9",
+      "sha256": "d6f50e3a8c3442f008a68018bd0b27c4b9cd55ea5e2b2c067d93b0a183a7fe5f"
+    },
+    "model.py": {
+      "commit": "dddecc6",
+      "sha256": "7b9152c6949dcbf9a9b5d963f58a1d457966bcc9e572c2fe56afc8be746bf392"
+    },
+    "evaluate.py": {
+      "commit": "9e27eb9",
+      "sha256": "862d4ea459e8fc9a101c555873ea45b0716345c528a68a8c47c8363ce073ae6f"
+    },
+    "feature_cache.py": {
+      "commit": "9e27eb9",
+      "sha256": "69a3fd202e5f9f515aa8a0e7e45e5eceb17919163ec1855af584caa44514846e"
+    },
+    "experiment_utils.py": {
+      "commit": "9e27eb9",
+      "sha256": "58535ae6cfc68f4c531d42c0a99648d7da2eb93da9cc3f25deff359de35b194d"
+    }
+  }
+}

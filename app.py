@@ -12,9 +12,11 @@ from streamlit_webrtc import WebRtcMode, webrtc_streamer
 from torchvision import transforms
 
 from model import build_model
+from model_evidence import model_evidence
 
 # 相对项目目录查找权重，避免启动位置不同导致找不到文件。
 CHECKPOINT = Path(__file__).resolve().parent / "checkpoints" / "best_resnet18.pth"
+TEST_REPORT = Path(__file__).resolve().parent / "results/final/test_metrics.json"
 # TODO: 实时识别代码暂时保留，后续开放入口时将此开关设为 True。
 ENABLE_LIVE_CAMERA = False
 LABELS = {
@@ -52,6 +54,11 @@ def load_model(path, modified_ns):
     model.load_state_dict(checkpoint["model_state"])
     model.eval()  # 切换到预测状态，固定 BatchNorm 等层的行为。
     return model, classes
+
+
+@st.cache_data
+def current_model_evidence(path, modified_ns, report_modified_ns):
+    return model_evidence(path, TEST_REPORT)
 
 
 def predict_image(image, model, classes):
@@ -152,6 +159,13 @@ def main():
     st.set_page_config(page_title="垃圾图像分类", layout="wide")
     st.title("垃圾图像分类")
     has_model = CHECKPOINT.is_file()
+    evidence = current_model_evidence(CHECKPOINT, CHECKPOINT.stat().st_mtime_ns,
+        TEST_REPORT.stat().st_mtime_ns if TEST_REPORT.exists() else None) if has_model else None
+    if evidence:
+        st.caption(f"当前模型：{evidence['experiment']} 组 · 固定测试集准确率 {evidence['accuracy']:.2%}"
+                   f"（{evidence['samples']} 张图片）。单张图片的概率不代表准确率。")
+    elif has_model:
+        st.caption("当前为演示模型，尚无可核验的独立测试指标。")
     left, right = st.columns([1.2, 1], gap="large")
     image, clicked, live_context, processor = None, False, None, None
 

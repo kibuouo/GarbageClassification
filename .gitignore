@@ -4,6 +4,8 @@ venv/
 __pycache__/
 *.py[cod]
 .DS_Store
+.playwright-cli/
+output/
 # 提交一份原始数据和划分清单；训练/验证/测试目录由 split.py 生成。
 data/*
 !data/README.md
@@ -22,3 +24,4 @@ checkpoints/*
 results/*
 !results/README.md
 !results/final/
+!results/archive/

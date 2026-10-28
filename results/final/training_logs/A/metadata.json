@@ -1,12 +1,16 @@
 {
   "experiment": "A",
-  "run_id": "ppt_training",
-  "started_at": "2026-10-25T15:44:18+08:00",
+  "run_id": "audit_retrain_20261028",
+  "started_at": "2026-10-28T19:45:44+08:00",
   "device": "cpu",
   "torch_version": "2.14.1+cpu",
+  "python_version": "3.14.7",
+  "platform": "Windows-11-10.0.26300-SP0",
   "smoke_test": false,
   "initialization": "ImageNet ResNet18_Weights.DEFAULT",
   "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+  "manifest_hash_algorithm": "sha256-lf-v1",
+  "manifest_raw_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
   "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
   "counts": {
     "train": {
@@ -34,5 +38,20 @@
       "trash": 21
     }
   },
+  "code_sha256": {
+    "train.py": "ca5f9779cfb8d52e0597f497bf00dc92401c19b04192ced8a0a3e5b4dca8acf0",
+    "model.py": "7fc6aa259d6cd6ec67f9d53bb7184ef9aea39050de8a6ae682f472d694dff461",
+    "evaluate.py": "b6a42d9aeb0fcfc1f35afc06f52a64d90ce3ecb2a38fdd1948696058c6db4bae",
+    "experiment_utils.py": "4974f7a36811f462eeedc79ccd7ad5ce0be0dd500b2ed271a31cb8dcb66abb29",
+    "feature_cache.py": "69a3fd202e5f9f515aa8a0e7e45e5eceb17919163ec1855af584caa44514846e"
+  },
+  "code_lf_sha256": {
+    "train.py": "ca5f9779cfb8d52e0597f497bf00dc92401c19b04192ced8a0a3e5b4dca8acf0",
+    "model.py": "7fc6aa259d6cd6ec67f9d53bb7184ef9aea39050de8a6ae682f472d694dff461",
+    "evaluate.py": "b6a42d9aeb0fcfc1f35afc06f52a64d90ce3ecb2a38fdd1948696058c6db4bae",
+    "experiment_utils.py": "4974f7a36811f462eeedc79ccd7ad5ce0be0dd500b2ed271a31cb8dcb66abb29",
+    "feature_cache.py": "69a3fd202e5f9f515aa8a0e7e45e5eceb17919163ec1855af584caa44514846e"
+  },
+  "imagenet_weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
   "feature_cache_key": "0c05e99f4c7adc4294456a9fe5bdf9f44a15013fbad3ee2f16d7c582cbfbc28f"
 }

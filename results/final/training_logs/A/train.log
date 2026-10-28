@@ -1,32 +1,32 @@
-2026-10-25T15:44:38+08:00 INFO Building frozen-backbone feature cache; train original/flip + validation, no test images
-2026-10-25T15:45:13+08:00 INFO Feature cache train 100/442
-2026-10-25T15:45:44+08:00 INFO Feature cache train 200/442
-2026-10-25T15:46:43+08:00 INFO Feature cache train 300/442
-2026-10-25T15:47:38+08:00 INFO Feature cache train 400/442
-2026-10-25T15:48:32+08:00 INFO Experiment A device=cpu train=1765 val=378 effective_batch=16 resume_epoch=1
-2026-10-25T15:48:32+08:00 INFO train batch 100/442 loss=1.5370
-2026-10-25T15:48:32+08:00 INFO train batch 200/442 loss=1.3156
-2026-10-25T15:48:32+08:00 INFO train batch 300/442 loss=1.1905
-2026-10-25T15:48:32+08:00 INFO train batch 400/442 loss=1.1030
-2026-10-25T15:48:32+08:00 INFO epoch=1/5 stage=head loss=1.0666 val_loss=0.7813 train=62.55% val=71.69% macro_F1=0.6499 BEST
-2026-10-25T15:48:32+08:00 INFO train batch 100/442 loss=0.6153
-2026-10-25T15:48:32+08:00 INFO train batch 200/442 loss=0.6133
-2026-10-25T15:48:32+08:00 INFO train batch 300/442 loss=0.6222
-2026-10-25T15:48:32+08:00 INFO train batch 400/442 loss=0.6275
-2026-10-25T15:48:32+08:00 INFO epoch=2/5 stage=head loss=0.6206 val_loss=0.6738 train=79.21% val=74.07% macro_F1=0.6699 BEST
-2026-10-25T15:48:32+08:00 INFO train batch 100/442 loss=0.5785
-2026-10-25T15:48:32+08:00 INFO train batch 200/442 loss=0.5495
-2026-10-25T15:48:32+08:00 INFO train batch 300/442 loss=0.5356
-2026-10-25T15:48:32+08:00 INFO train batch 400/442 loss=0.5151
-2026-10-25T15:48:33+08:00 INFO epoch=3/5 stage=head loss=0.5149 val_loss=0.6034 train=83.17% val=77.25% macro_F1=0.7326 BEST
-2026-10-25T15:48:33+08:00 INFO train batch 100/442 loss=0.4599
-2026-10-25T15:48:33+08:00 INFO train batch 200/442 loss=0.4619
-2026-10-25T15:48:33+08:00 INFO train batch 300/442 loss=0.4594
-2026-10-25T15:48:33+08:00 INFO train batch 400/442 loss=0.4533
-2026-10-25T15:48:33+08:00 INFO epoch=4/5 stage=head loss=0.4510 val_loss=0.5854 train=84.93% val=77.51% macro_F1=0.7416 BEST
-2026-10-25T15:48:33+08:00 INFO train batch 100/442 loss=0.3721
-2026-10-25T15:48:33+08:00 INFO train batch 200/442 loss=0.3949
-2026-10-25T15:48:33+08:00 INFO train batch 300/442 loss=0.4102
-2026-10-25T15:48:33+08:00 INFO train batch 400/442 loss=0.4123
-2026-10-25T15:48:33+08:00 INFO epoch=5/5 stage=head loss=0.4151 val_loss=0.5677 train=86.69% val=79.10% macro_F1=0.7482 BEST
-2026-10-25T15:48:33+08:00 INFO completed best_epoch=5 best_val=79.10% run_dir=E:\DeskTop\垃圾分类识别\GarbageClassification-main\results\runs\A\ppt_training
+2026-10-28T19:45:45+08:00 INFO Building frozen-backbone feature cache; train original/flip + validation, no test images
+2026-10-28T19:46:04+08:00 INFO Feature cache train 100/442
+2026-10-28T19:46:22+08:00 INFO Feature cache train 200/442
+2026-10-28T19:46:40+08:00 INFO Feature cache train 300/442
+2026-10-28T19:47:00+08:00 INFO Feature cache train 400/442
+2026-10-28T19:47:19+08:00 INFO Experiment A device=cpu train=1765 val=378 effective_batch=16 resume_epoch=1
+2026-10-28T19:47:19+08:00 INFO train batch 100/442 loss=1.5370
+2026-10-28T19:47:19+08:00 INFO train batch 200/442 loss=1.3156
+2026-10-28T19:47:19+08:00 INFO train batch 300/442 loss=1.1905
+2026-10-28T19:47:19+08:00 INFO train batch 400/442 loss=1.1030
+2026-10-28T19:47:19+08:00 INFO epoch=1/5 stage=head loss=1.0666 val_loss=0.7813 train=62.55% val=71.69% macro_F1=0.6499 BEST
+2026-10-28T19:47:19+08:00 INFO train batch 100/442 loss=0.6153
+2026-10-28T19:47:19+08:00 INFO train batch 200/442 loss=0.6133
+2026-10-28T19:47:19+08:00 INFO train batch 300/442 loss=0.6222
+2026-10-28T19:47:19+08:00 INFO train batch 400/442 loss=0.6275
+2026-10-28T19:47:19+08:00 INFO epoch=2/5 stage=head loss=0.6206 val_loss=0.6738 train=79.21% val=74.07% macro_F1=0.6699 BEST
+2026-10-28T19:47:19+08:00 INFO train batch 100/442 loss=0.5785
+2026-10-28T19:47:19+08:00 INFO train batch 200/442 loss=0.5495
+2026-10-28T19:47:19+08:00 INFO train batch 300/442 loss=0.5356
+2026-10-28T19:47:19+08:00 INFO train batch 400/442 loss=0.5151
+2026-10-28T19:47:19+08:00 INFO epoch=3/5 stage=head loss=0.5149 val_loss=0.6034 train=83.17% val=77.25% macro_F1=0.7326 BEST
+2026-10-28T19:47:19+08:00 INFO train batch 100/442 loss=0.4599
+2026-10-28T19:47:19+08:00 INFO train batch 200/442 loss=0.4619
+2026-10-28T19:47:19+08:00 INFO train batch 300/442 loss=0.4594
+2026-10-28T19:47:20+08:00 INFO train batch 400/442 loss=0.4533
+2026-10-28T19:47:20+08:00 INFO epoch=4/5 stage=head loss=0.4510 val_loss=0.5854 train=84.93% val=77.51% macro_F1=0.7416 BEST
+2026-10-28T19:47:20+08:00 INFO train batch 100/442 loss=0.3721
+2026-10-28T19:47:20+08:00 INFO train batch 200/442 loss=0.3949
+2026-10-28T19:47:20+08:00 INFO train batch 300/442 loss=0.4102
+2026-10-28T19:47:20+08:00 INFO train batch 400/442 loss=0.4123
+2026-10-28T19:47:20+08:00 INFO epoch=5/5 stage=head loss=0.4151 val_loss=0.5677 train=86.69% val=79.10% macro_F1=0.7482 BEST
+2026-10-28T19:47:20+08:00 INFO completed best_epoch=5 best_val=79.10% run_dir=D:\GarbageClassification\results\runs\A\audit_retrain_20261028

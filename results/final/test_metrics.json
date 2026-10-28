@@ -6,7 +6,7 @@
     "A": {
       "samples": 378,
       "accuracy": 0.8253968253968254,
-      "macro_f1": 0.8114569145179785,
+      "macro_f1": 0.8114569145179784,
       "macro_precision": 0.8584930542284394,
       "macro_recall": 0.7938787459274658,
       "classes": [
@@ -108,18 +108,23 @@
       "confusion_matrix_axes": "rows=true, columns=predicted",
       "split": "test",
       "smoke_test": false,
-      "checkpoint_sha256": "70deb0475b2a3051e8d8b815281e002e185a43daf62b31c3b512092eb35e76a9",
+      "checkpoint_sha256": "ea9417db3f42b2568767ebae3ca1703b9f1ac4730659c72237853116c6c99089",
       "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
       "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
+      "manifest_hash_algorithm": "sha256-lf-v1",
       "training_metadata": {
         "experiment": "A",
-        "run_id": "ppt_training",
-        "started_at": "2026-10-25T15:44:18+08:00",
+        "run_id": "audit_retrain_20261028",
+        "started_at": "2026-10-28T19:45:44+08:00",
         "device": "cpu",
         "torch_version": "2.14.1+cpu",
+        "python_version": "3.14.7",
+        "platform": "Windows-11-10.0.26300-SP0",
         "smoke_test": false,
         "initialization": "ImageNet ResNet18_Weights.DEFAULT",
         "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+        "manifest_hash_algorithm": "sha256-lf-v1",
+        "manifest_raw_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
         "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
         "counts": {
           "train": {
@@ -147,6 +152,21 @@
             "trash": 21
           }
         },
+        "code_sha256": {
+          "train.py": "ca5f9779cfb8d52e0597f497bf00dc92401c19b04192ced8a0a3e5b4dca8acf0",
+          "model.py": "7fc6aa259d6cd6ec67f9d53bb7184ef9aea39050de8a6ae682f472d694dff461",
+          "evaluate.py": "b6a42d9aeb0fcfc1f35afc06f52a64d90ce3ecb2a38fdd1948696058c6db4bae",
+          "experiment_utils.py": "4974f7a36811f462eeedc79ccd7ad5ce0be0dd500b2ed271a31cb8dcb66abb29",
+          "feature_cache.py": "69a3fd202e5f9f515aa8a0e7e45e5eceb17919163ec1855af584caa44514846e"
+        },
+        "code_lf_sha256": {
+          "train.py": "ca5f9779cfb8d52e0597f497bf00dc92401c19b04192ced8a0a3e5b4dca8acf0",
+          "model.py": "7fc6aa259d6cd6ec67f9d53bb7184ef9aea39050de8a6ae682f472d694dff461",
+          "evaluate.py": "b6a42d9aeb0fcfc1f35afc06f52a64d90ce3ecb2a38fdd1948696058c6db4bae",
+          "experiment_utils.py": "4974f7a36811f462eeedc79ccd7ad5ce0be0dd500b2ed271a31cb8dcb66abb29",
+          "feature_cache.py": "69a3fd202e5f9f515aa8a0e7e45e5eceb17919163ec1855af584caa44514846e"
+        },
+        "imagenet_weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
         "feature_cache_key": "0c05e99f4c7adc4294456a9fe5bdf9f44a15013fbad3ee2f16d7c582cbfbc28f",
         "config": {
           "name": "A",
@@ -3201,7 +3221,7 @@
           "probability": 0.6614624857902527
         }
       ],
-      "run_dir": "E:\\DeskTop\\垃圾分类识别\\GarbageClassification-main\\results\\runs\\A\\ppt_training",
+      "run_dir": "D:\\GarbageClassification\\results\\runs\\A\\audit_retrain_20261028",
       "epochs_trained": 5
     },
     "B": {
@@ -3309,18 +3329,23 @@
       "confusion_matrix_axes": "rows=true, columns=predicted",
       "split": "test",
       "smoke_test": false,
-      "checkpoint_sha256": "36b8a324f8625cb5b1977519751f31b920fbd4d6c02cd0fe7b8331056b891702",
+      "checkpoint_sha256": "0f5f7edcd6594aae6517251ad3470b2efac6f8924a2ce208eb830cd8cfa50272",
       "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
       "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
+      "manifest_hash_algorithm": "sha256-lf-v1",
       "training_metadata": {
         "experiment": "B",
-        "run_id": "ppt_training",
-        "started_at": "2026-10-25T15:48:33+08:00",
+        "run_id": "audit_retrain_20261028",
+        "started_at": "2026-10-28T19:47:20+08:00",
         "device": "cpu",
         "torch_version": "2.14.1+cpu",
+        "python_version": "3.14.7",
+        "platform": "Windows-11-10.0.26300-SP0",
         "smoke_test": false,
         "initialization": "ImageNet ResNet18_Weights.DEFAULT",
         "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+        "manifest_hash_algorithm": "sha256-lf-v1",
+        "manifest_raw_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
         "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
         "counts": {
           "train": {
@@ -3348,6 +3373,21 @@
             "trash": 21
           }
         },
+        "code_sha256": {
+          "train.py": "ca5f9779cfb8d52e0597f497bf00dc92401c19b04192ced8a0a3e5b4dca8acf0",
+          "model.py": "7fc6aa259d6cd6ec67f9d53bb7184ef9aea39050de8a6ae682f472d694dff461",
+          "evaluate.py": "b6a42d9aeb0fcfc1f35afc06f52a64d90ce3ecb2a38fdd1948696058c6db4bae",
+          "experiment_utils.py": "4974f7a36811f462eeedc79ccd7ad5ce0be0dd500b2ed271a31cb8dcb66abb29",
+          "feature_cache.py": "69a3fd202e5f9f515aa8a0e7e45e5eceb17919163ec1855af584caa44514846e"
+        },
+        "code_lf_sha256": {
+          "train.py": "ca5f9779cfb8d52e0597f497bf00dc92401c19b04192ced8a0a3e5b4dca8acf0",
+          "model.py": "7fc6aa259d6cd6ec67f9d53bb7184ef9aea39050de8a6ae682f472d694dff461",
+          "evaluate.py": "b6a42d9aeb0fcfc1f35afc06f52a64d90ce3ecb2a38fdd1948696058c6db4bae",
+          "experiment_utils.py": "4974f7a36811f462eeedc79ccd7ad5ce0be0dd500b2ed271a31cb8dcb66abb29",
+          "feature_cache.py": "69a3fd202e5f9f515aa8a0e7e45e5eceb17919163ec1855af584caa44514846e"
+        },
+        "imagenet_weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
         "feature_cache_key": "0c05e99f4c7adc4294456a9fe5bdf9f44a15013fbad3ee2f16d7c582cbfbc28f",
         "config": {
           "name": "B",
@@ -6402,7 +6442,7 @@
           "probability": 0.7733138203620911
         }
       ],
-      "run_dir": "E:\\DeskTop\\垃圾分类识别\\GarbageClassification-main\\results\\runs\\B\\ppt_training",
+      "run_dir": "D:\\GarbageClassification\\results\\runs\\B\\audit_retrain_20261028",
       "epochs_trained": 19
     },
     "C": {
@@ -6510,18 +6550,23 @@
       "confusion_matrix_axes": "rows=true, columns=predicted",
       "split": "test",
       "smoke_test": false,
-      "checkpoint_sha256": "47a1e7f5f10632e97f6b6688ac4425f931ae45f74515f6a5605cf82fba032a44",
+      "checkpoint_sha256": "ff863443824f79e8c3b56d000c9a5eaaabe1beee1e143c7a3b50cfc2bf92ed5b",
       "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
       "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
+      "manifest_hash_algorithm": "sha256-lf-v1",
       "training_metadata": {
         "experiment": "C",
-        "run_id": "ppt_training",
-        "started_at": "2026-10-25T15:48:40+08:00",
+        "run_id": "audit_retrain_20261028",
+        "started_at": "2026-10-28T19:47:23+08:00",
         "device": "cpu",
         "torch_version": "2.14.1+cpu",
+        "python_version": "3.14.7",
+        "platform": "Windows-11-10.0.26300-SP0",
         "smoke_test": false,
         "initialization": "ImageNet ResNet18_Weights.DEFAULT",
         "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+        "manifest_hash_algorithm": "sha256-lf-v1",
+        "manifest_raw_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
         "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
         "counts": {
           "train": {
@@ -6549,6 +6594,21 @@
             "trash": 21
           }
         },
+        "code_sha256": {
+          "train.py": "ca5f9779cfb8d52e0597f497bf00dc92401c19b04192ced8a0a3e5b4dca8acf0",
+          "model.py": "7fc6aa259d6cd6ec67f9d53bb7184ef9aea39050de8a6ae682f472d694dff461",
+          "evaluate.py": "b6a42d9aeb0fcfc1f35afc06f52a64d90ce3ecb2a38fdd1948696058c6db4bae",
+          "experiment_utils.py": "4974f7a36811f462eeedc79ccd7ad5ce0be0dd500b2ed271a31cb8dcb66abb29",
+          "feature_cache.py": "69a3fd202e5f9f515aa8a0e7e45e5eceb17919163ec1855af584caa44514846e"
+        },
+        "code_lf_sha256": {
+          "train.py": "ca5f9779cfb8d52e0597f497bf00dc92401c19b04192ced8a0a3e5b4dca8acf0",
+          "model.py": "7fc6aa259d6cd6ec67f9d53bb7184ef9aea39050de8a6ae682f472d694dff461",
+          "evaluate.py": "b6a42d9aeb0fcfc1f35afc06f52a64d90ce3ecb2a38fdd1948696058c6db4bae",
+          "experiment_utils.py": "4974f7a36811f462eeedc79ccd7ad5ce0be0dd500b2ed271a31cb8dcb66abb29",
+          "feature_cache.py": "69a3fd202e5f9f515aa8a0e7e45e5eceb17919163ec1855af584caa44514846e"
+        },
+        "imagenet_weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
         "feature_cache_key": "0c05e99f4c7adc4294456a9fe5bdf9f44a15013fbad3ee2f16d7c582cbfbc28f",
         "config": {
           "name": "C",
@@ -9603,7 +9663,7 @@
           "probability": 0.9918776750564575
         }
       ],
-      "run_dir": "E:\\DeskTop\\垃圾分类识别\\GarbageClassification-main\\results\\runs\\C\\ppt_training",
+      "run_dir": "D:\\GarbageClassification\\results\\runs\\C\\audit_retrain_20261028",
       "epochs_trained": 20
     }
   }

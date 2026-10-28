@@ -1,0 +1,10 @@
+{
+  "verified_at": "2026-10-28T19:25:02+08:00",
+  "same_test_images": true,
+  "samples_per_experiment": 378,
+  "prediction_accuracy_and_confusion_checked": true,
+  "checkpoint_hashes_checked": true,
+  "evaluation_code_sha256": "862d4ea459e8fc9a101c555873ea45b0716345c528a68a8c47c8363ce073ae6f",
+  "plot_code_sha256": "28d135c5a91fdf1e25dc40d84df3f137ebb13c4bce5444ff804d46424bdb16c7",
+  "resume_note": "C resumed from epoch 19 and completed epoch 20 without configuration changes"
+}

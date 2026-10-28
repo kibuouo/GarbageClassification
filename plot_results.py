@@ -17,17 +17,19 @@ import numpy as np
 from experiment_utils import ROOT, latest_run
 
 
-def plot_results(results_root, experiments, allow_smoke=False):
-    final_dir = results_root / "final"
+def plot_results(results_root, experiments, allow_smoke=False, archived=False):
+    report_dir = results_root / "final"
+    # 跨平台重绘可能使用不同字体，写入独立目录，保留已校验交付件的字节。
+    final_dir = results_root / "replotted" if archived else report_dir
     final_dir.mkdir(parents=True, exist_ok=True)
     histories = {}
     selected_runs = {}
     for name in experiments:
-        run = latest_run(results_root, name, allow_smoke)
+        run = report_dir / "training_logs" / name if archived else latest_run(results_root, name, allow_smoke)
         selected_runs[name] = run.resolve()
         with (run / "history.csv").open(encoding="utf-8-sig", newline="") as file:
             histories[name] = list(csv.DictReader(file))
-    report_path = final_dir / "test_metrics.json"
+    report_path = report_dir / "test_metrics.json"
     report = json.loads(report_path.read_text(encoding="utf-8")) if report_path.exists() else None
     if report:
         missing = set(experiments) - set(report["experiments"])
@@ -35,7 +37,9 @@ def plot_results(results_root, experiments, allow_smoke=False):
             raise ValueError(f"缺少实验测试指标：{sorted(missing)}")
         for name in experiments:
             metrics = report["experiments"][name]
-            if Path(metrics["run_dir"]).resolve() != selected_runs[name]:
+            metadata = json.loads((selected_runs[name] / "metadata.json").read_text(encoding="utf-8"))
+            if (metrics["training_metadata"]["run_id"] != metadata["run_id"]
+                    or metrics["training_metadata"].get("code_sha256") != metadata.get("code_sha256")):
                 raise ValueError(f"{name} 最新训练与测试记录不一致，请先重新运行 evaluate.py。")
             if metrics["smoke_test"] and not allow_smoke:
                 raise ValueError("拒绝将小样本指标绘制为正式实验图。")
@@ -119,8 +123,9 @@ def main():
     parser.add_argument("--results-root", type=Path, default=ROOT / "results")
     parser.add_argument("--experiments", nargs="+", choices=["A", "B", "C"], default=["A", "B", "C"])
     parser.add_argument("--allow-smoke", action="store_true")
+    parser.add_argument("--archived", action="store_true", help="直接从 final/training_logs 读取随仓库交付的记录")
     args = parser.parse_args()
-    plot_results(args.results_root, args.experiments, args.allow_smoke)
+    plot_results(args.results_root, args.experiments, args.allow_smoke, args.archived)
 
 
 if __name__ == "__main__":

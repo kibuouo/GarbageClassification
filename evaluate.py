@@ -17,7 +17,7 @@ from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms
 
 from model import build_model
-from experiment_utils import atomic_json, audit_manifest, latest_run, limit_dataset, sha256
+from experiment_utils import atomic_json, audit_manifest, latest_run, limit_dataset, sha256, verify_data_identity
 
 ROOT = Path(__file__).resolve().parent
 MEAN = (0.485, 0.456, 0.406)
@@ -109,9 +109,8 @@ def evaluate_checkpoint(path, split, batch_size, audit, max_samples=None, allow_
     smoke = bool(metadata.get("smoke_test") or max_samples)
     if smoke and not allow_smoke:
         raise ValueError("这是小样本流程验证，不是正式实验；需要显式 --allow-smoke。")
-    for key in ("manifest_sha256", "dataset_sha256"):
-        if metadata.get(key) and metadata[key] != audit[key]:
-            raise ValueError(f"{key} 与训练时不同，拒绝混用数据。")
+    if metadata:
+        verify_data_identity(metadata, audit)
     dataset = limit_dataset(ManifestDataset(split, classes), max_samples)
     model = build_model(len(classes))
     model.load_state_dict(checkpoint["model_state"])
@@ -124,6 +123,7 @@ def evaluate_checkpoint(path, split, batch_size, audit, max_samples=None, allow_
     metrics.update({
         "split": split, "smoke_test": smoke, "checkpoint_sha256": sha256(path),
         "manifest_sha256": audit["manifest_sha256"], "dataset_sha256": audit["dataset_sha256"],
+        "manifest_hash_algorithm": audit.get("manifest_hash_algorithm"),
         "training_metadata": metadata,
         "provenance_note": "从已记录初始化出发，仅 train 参与训练、val 参与选模。" if known_source else
             "旧权重缺少完整训练来源，无法证明其训练数据与当前评估集互斥。",
@@ -138,8 +138,14 @@ def export_comparison(final_dir, name, metrics):
     report = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {
         "schema_version": 1, "split": "test", "selection_rule": "best epoch by validation accuracy; latest completed run per experiment", "experiments": {}}
     for existing in report["experiments"].values():
-        if any(existing[key] != metrics[key] for key in ("dataset_sha256", "manifest_sha256", "smoke_test")):
+        verify_data_identity(existing, metrics)
+        if existing["smoke_test"] != metrics["smoke_test"]:
             raise ValueError("汇总目录包含不同数据或正式/小样本混合结果，请另选 results-root。")
+        # 保留原始记录的哈希，并将汇总身份统一成当前规范哈希。
+        if existing["manifest_sha256"] != metrics["manifest_sha256"]:
+            existing.setdefault("legacy_manifest_sha256", existing["manifest_sha256"])
+        existing["manifest_sha256"] = metrics["manifest_sha256"]
+        existing["manifest_hash_algorithm"] = metrics.get("manifest_hash_algorithm")
     report["experiments"][name] = metrics
     atomic_json(path, report)
     columns = ["experiment", "run_id", "best_epoch", "epochs_trained", "pretrained", "seed", "effective_batch",

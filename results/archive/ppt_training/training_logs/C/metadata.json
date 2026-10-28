@@ -1,0 +1,38 @@
+{
+  "experiment": "C",
+  "run_id": "ppt_training",
+  "started_at": "2026-10-25T15:48:40+08:00",
+  "device": "cpu",
+  "torch_version": "2.14.1+cpu",
+  "smoke_test": false,
+  "initialization": "ImageNet ResNet18_Weights.DEFAULT",
+  "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+  "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
+  "counts": {
+    "train": {
+      "cardboard": 283,
+      "glass": 348,
+      "metal": 287,
+      "paper": 416,
+      "plastic": 336,
+      "trash": 95
+    },
+    "val": {
+      "cardboard": 60,
+      "glass": 75,
+      "metal": 61,
+      "paper": 89,
+      "plastic": 72,
+      "trash": 21
+    },
+    "test": {
+      "cardboard": 60,
+      "glass": 75,
+      "metal": 61,
+      "paper": 89,
+      "plastic": 72,
+      "trash": 21
+    }
+  },
+  "feature_cache_key": "0c05e99f4c7adc4294456a9fe5bdf9f44a15013fbad3ee2f16d7c582cbfbc28f"
+}

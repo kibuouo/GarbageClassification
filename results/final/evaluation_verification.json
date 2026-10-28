@@ -1,10 +1,63 @@
 {
-  "verified_at": "2026-10-28T19:25:02+08:00",
-  "same_test_images": true,
-  "samples_per_experiment": 378,
-  "prediction_accuracy_and_confusion_checked": true,
-  "checkpoint_hashes_checked": true,
-  "evaluation_code_sha256": "862d4ea459e8fc9a101c555873ea45b0716345c528a68a8c47c8363ce073ae6f",
-  "plot_code_sha256": "28d135c5a91fdf1e25dc40d84df3f137ebb13c4bce5444ff804d46424bdb16c7",
-  "resume_note": "C resumed from epoch 19 and completed epoch 20 without configuration changes"
+  "verified_at": "2026-10-28T20:15:53+08:00",
+  "method": "Reload each archived best.pth, rerun all test images and compare every label, confusion matrix and aggregate metric.",
+  "artifact_files_verified": 46,
+  "data_audit": {
+    "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+    "manifest_hash_algorithm": "sha256-lf-v1",
+    "manifest_raw_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+    "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
+    "counts": {
+      "train": {
+        "cardboard": 283,
+        "glass": 348,
+        "metal": 287,
+        "paper": 416,
+        "plastic": 336,
+        "trash": 95
+      },
+      "val": {
+        "cardboard": 60,
+        "glass": 75,
+        "metal": 61,
+        "paper": 89,
+        "plastic": 72,
+        "trash": 21
+      },
+      "test": {
+        "cardboard": 60,
+        "glass": 75,
+        "metal": 61,
+        "paper": 89,
+        "plastic": 72,
+        "trash": 21
+      }
+    }
+  },
+  "experiments": {
+    "A": {
+      "checkpoint_sha256": "ea9417db3f42b2568767ebae3ca1703b9f1ac4730659c72237853116c6c99089",
+      "samples": 378,
+      "accuracy": 0.8253968253968254,
+      "macro_f1": 0.8114569145179784,
+      "all_predictions_match": true,
+      "max_probability_difference": 0.0
+    },
+    "B": {
+      "checkpoint_sha256": "0f5f7edcd6594aae6517251ad3470b2efac6f8924a2ce208eb830cd8cfa50272",
+      "samples": 378,
+      "accuracy": 0.8544973544973545,
+      "macro_f1": 0.851894508059011,
+      "all_predictions_match": true,
+      "max_probability_difference": 0.0
+    },
+    "C": {
+      "checkpoint_sha256": "ff863443824f79e8c3b56d000c9a5eaaabe1beee1e143c7a3b50cfc2bf92ed5b",
+      "samples": 378,
+      "accuracy": 0.9285714285714286,
+      "macro_f1": 0.9256876145113919,
+      "all_predictions_match": true,
+      "max_probability_difference": 0.0
+    }
+  }
 }

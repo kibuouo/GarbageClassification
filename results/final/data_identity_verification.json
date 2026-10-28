@@ -1,0 +1,41 @@
+{
+  "verified_at": "2026-10-28T19:58:08+08:00",
+  "current_audit": {
+    "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+    "manifest_hash_algorithm": "sha256-lf-v1",
+    "manifest_raw_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+    "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
+    "counts": {
+      "train": {
+        "cardboard": 283,
+        "glass": 348,
+        "metal": 287,
+        "paper": 416,
+        "plastic": 336,
+        "trash": 95
+      },
+      "val": {
+        "cardboard": 60,
+        "glass": 75,
+        "metal": 61,
+        "paper": 89,
+        "plastic": 72,
+        "trash": 21
+      },
+      "test": {
+        "cardboard": 60,
+        "glass": 75,
+        "metal": 61,
+        "paper": 89,
+        "plastic": 72,
+        "trash": 21
+      }
+    }
+  },
+  "legacy_crlf_manifest_sha256": "90c7aa0d616cbcf2ccf7d40f7520d981c83a0ec9d1cd8bf5b92d595aab519634",
+  "historical_lf_protocol_accepted": true,
+  "legacy_crlf_resume_completed": true,
+  "legacy_crlf_checkpoint_evaluation_succeeded": true,
+  "legacy_result_merge_and_real_change_rejection": "Covered by tests/test_manifest_identity.py; full unittest suite: 10 passed.",
+  "smoke_results_root": "results/smoke_crossplatform (excluded from formal comparison)"
+}

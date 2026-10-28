@@ -8,6 +8,7 @@ import os
 import random
 import re
 import uuid
+import platform
 from pathlib import Path
 from time import monotonic
 from datetime import datetime, timedelta, timezone
@@ -21,7 +22,8 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 
 from evaluate import MEAN, STD, ManifestDataset, classification_metrics
-from experiment_utils import ROOT, CLASSES, atomic_json, audit_manifest, limit_dataset, load_config, now, validate_config
+from experiment_utils import (ROOT, CLASSES, atomic_json, audit_manifest, limit_dataset,
+                              load_config, now, validate_config, verify_data_identity, snapshot_source, sha256)
 from model import build_model
 from feature_cache import feature_datasets
 
@@ -129,16 +131,28 @@ def train_experiment(config, run_dir, audit, device="auto", resume=False, stop_a
         device = torch.device(device)
         if resume:
             metadata = json.loads((run_dir / "metadata.json").read_text(encoding="utf-8"))
-            if any(metadata[key] != audit[key] for key in ("manifest_sha256", "dataset_sha256")):
-                raise ValueError("恢复被拒绝：数据或划分清单已发生变化。")
+            verify_data_identity(metadata, audit)
+            if metadata.get("code_lf_sha256"):
+                import hashlib
+                for name, expected in metadata["code_lf_sha256"].items():
+                    actual = hashlib.sha256((ROOT / name).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+                    if actual != expected:
+                        raise ValueError(f"恢复被拒绝：训练源码 {name} 已发生变化。")
         else:
             metadata = {"experiment": config["name"], "run_id": run_dir.name, "started_at": now(),
                         "device": str(device), "torch_version": str(torch.__version__),
+                        "python_version": platform.python_version(), "platform": platform.platform(),
                         "smoke_test": bool(config.get("max_train_samples") or config.get("max_val_samples")),
-                        "initialization": "ImageNet ResNet18_Weights.DEFAULT" if config["pretrained"] else "random", **audit}
+                        "initialization": "ImageNet ResNet18_Weights.DEFAULT" if config["pretrained"] else "random",
+                        **audit, **snapshot_source(run_dir)}
             atomic_json(run_dir / "metadata.json", metadata)
         atomic_json(run_dir / "status.json", {"status": "running", "updated_at": now(), "resumed": resume})
         model = build_model(len(CLASSES), pretrained=config["pretrained"] and not resume, freeze_backbone=True).to(device)
+        if not resume and config["pretrained"]:
+            from torchvision.models import ResNet18_Weights
+            weights_file = Path(torch.hub.get_dir()) / "checkpoints" / ResNet18_Weights.DEFAULT.url.rsplit("/", 1)[-1]
+            metadata["imagenet_weights_sha256"] = sha256(weights_file)
+            atomic_json(run_dir / "metadata.json", metadata)
         optimizer = torch.optim.AdamW([
             {"params": model.fc.parameters(), "lr": config["head_lr"], "name": "head"},
             {"params": model.layer4.parameters(), "lr": config["layer4_lr"], "name": "layer4"},
