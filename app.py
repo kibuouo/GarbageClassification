@@ -17,8 +17,6 @@ from model_evidence import model_evidence
 # 相对项目目录查找权重，避免启动位置不同导致找不到文件。
 CHECKPOINT = Path(__file__).resolve().parent / "checkpoints" / "best_resnet18.pth"
 TEST_REPORT = Path(__file__).resolve().parent / "results/final/test_metrics.json"
-# TODO: 实时识别代码暂时保留，后续开放入口时将此开关设为 True。
-ENABLE_LIVE_CAMERA = False
 LABELS = {
     "cardboard": "纸板",
     "glass": "玻璃",
@@ -171,9 +169,7 @@ def main():
 
     with left:
         st.subheader("选择图片")
-        sources = ["上传图片", "摄像头拍照"]
-        if ENABLE_LIVE_CAMERA:
-            sources.append("实时摄像头")
+        sources = ["上传图片", "摄像头拍照", "实时摄像头"]
         source = st.radio(
             "图片来源",
             sources,
