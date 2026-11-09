@@ -52,7 +52,7 @@ def archive_results(results_root, promote=False):
         "test_rule": "Evaluate best.pth on all 378 fixed test images only after training and validation selection.",
         "historical_results": "results/archive/ppt_training (original checkpoints unavailable; historical metrics retained unchanged)",
     })
-    packages = {name: version(name) for name in ("torch", "torchvision", "Pillow", "numpy", "streamlit", "matplotlib", "streamlit-webrtc")}
+    packages = {name: version(name) for name in ("torch", "torchvision", "Pillow", "numpy", "streamlit", "matplotlib")}
     atomic_json(final / "environment.json", {"recorded_at": now(), "python": platform.python_version(),
                 "platform": platform.platform(), "packages": packages})
     lines = ["# A/B/C 实验测试结果", "",
