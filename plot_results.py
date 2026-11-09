@@ -53,7 +53,7 @@ def plot_results(results_root, experiments, allow_smoke=False, archived=False):
             axis.set_ylim(0, 1)
         axis.grid(alpha=0.2)
         axis.legend(title="Experiment")
-    figure.suptitle("SMOKE TEST - not experimental results" if allow_smoke else "ResNet-18 experiment comparison")
+    figure.suptitle("SMOKE TEST - not experimental results" if allow_smoke else "Experiment comparison")
     figure.savefig(final_dir / "training_curves.png", dpi=160)
     plt.close(figure)
     if report is None:
@@ -95,7 +95,7 @@ def plot_results(results_root, experiments, allow_smoke=False, archived=False):
         metrics = report["experiments"][name]
         meta = metrics["training_metadata"]
         config = meta["config"]
-        method = ("微调 layer4 + 分类层" if config["mode"] == "layer4" else "仅训练分类层") if chinese_font else config["mode"]
+        method = ("微调末端特征层 + 分类层" if config["mode"] == "layer4" else "仅训练分类层") if chinese_font else config["mode"]
         detail = f"训练 {metrics['epochs_trained']} 轮 · 最佳第 {meta['epoch']} 轮" if chinese_font else f"Trained {metrics['epochs_trained']} epochs; best {meta['epoch']}"
         labels.append(f"{name} 组\n{method}\n{detail}" if chinese_font else f"{name}\n{method}\n{detail}")
     axis.set(xticks=x, xticklabels=labels, ylim=(0, 1.08), ylabel="测试集准确率" if chinese_font else "Test accuracy")

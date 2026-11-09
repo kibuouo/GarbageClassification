@@ -12,8 +12,11 @@ from model import build_model
 from model_evidence import model_evidence
 
 # 相对项目目录查找权重，避免启动位置不同导致找不到文件。
-CHECKPOINT = Path(__file__).resolve().parent / "checkpoints" / "best_resnet18.pth"
-TEST_REPORT = Path(__file__).resolve().parent / "results/final/test_metrics.json"
+ROOT = Path(__file__).resolve().parent
+EFFICIENT_CHECKPOINT = ROOT / "checkpoints" / "best_efficientnet_b0.pth"
+CHECKPOINT = EFFICIENT_CHECKPOINT if EFFICIENT_CHECKPOINT.is_file() else ROOT / "checkpoints" / "best_resnet18.pth"
+TEST_REPORT = (ROOT / "results/efficientnet_b0/final/test_metrics.json" if CHECKPOINT == EFFICIENT_CHECKPOINT
+               else ROOT / "results/final/test_metrics.json")
 LABELS = {
     "cardboard": "纸板",
     "glass": "玻璃",
@@ -45,7 +48,7 @@ def load_model(path, modified_ns):
     """加载本地权重；文件时间戳改变时更新缓存。"""
     checkpoint = torch.load(path, map_location="cpu", weights_only=True)
     classes = checkpoint["classes"]  # 类别顺序必须与训练时一致。
-    model = build_model(len(classes))
+    model = build_model(len(classes), architecture=checkpoint.get("training_metadata", {}).get("architecture", "resnet18"))
     model.load_state_dict(checkpoint["model_state"])
     model.eval()  # 切换到预测状态，固定 BatchNorm 等层的行为。
     return model, classes
@@ -89,7 +92,7 @@ def main():
     evidence = current_model_evidence(CHECKPOINT, CHECKPOINT.stat().st_mtime_ns,
         TEST_REPORT.stat().st_mtime_ns if TEST_REPORT.exists() else None) if has_model else None
     if evidence:
-        st.caption(f"当前模型：{evidence['experiment']} 组 · 固定测试集准确率 {evidence['accuracy']:.2%}"
+        st.caption(f"当前模型：{'EfficientNet-B0' if CHECKPOINT == EFFICIENT_CHECKPOINT else 'ResNet-18'} · {evidence['experiment']} 组 · 固定测试集准确率 {evidence['accuracy']:.2%}"
                    f"（{evidence['samples']} 张图片）。单张图片的概率不代表准确率。")
     elif has_model:
         st.caption("当前为演示模型，尚无可核验的独立测试指标。")

@@ -1,0 +1,32 @@
+2026-11-09T16:25:23+08:00 INFO Building frozen-backbone feature cache; train original/flip + validation, no test images
+2026-11-09T16:25:26+08:00 INFO Feature cache train 100/442
+2026-11-09T16:25:30+08:00 INFO Feature cache train 200/442
+2026-11-09T16:25:33+08:00 INFO Feature cache train 300/442
+2026-11-09T16:25:36+08:00 INFO Feature cache train 400/442
+2026-11-09T16:25:41+08:00 INFO Experiment A device=mps train=1765 val=378 effective_batch=16 resume_epoch=1
+2026-11-09T16:25:41+08:00 INFO train batch 100/442 loss=1.3007
+2026-11-09T16:25:41+08:00 INFO train batch 200/442 loss=1.0892
+2026-11-09T16:25:41+08:00 INFO train batch 300/442 loss=0.9496
+2026-11-09T16:25:41+08:00 INFO train batch 400/442 loss=0.8329
+2026-11-09T16:25:42+08:00 INFO epoch=1/5 stage=head loss=0.8127 val_loss=0.5487 train=74.67% val=83.07% macro_F1=0.7981 BEST
+2026-11-09T16:25:42+08:00 INFO train batch 100/442 loss=0.4547
+2026-11-09T16:25:42+08:00 INFO train batch 200/442 loss=0.4251
+2026-11-09T16:25:42+08:00 INFO train batch 300/442 loss=0.4221
+2026-11-09T16:25:42+08:00 INFO train batch 400/442 loss=0.4168
+2026-11-09T16:25:43+08:00 INFO epoch=2/5 stage=head loss=0.4144 val_loss=0.4571 train=86.97% val=84.92% macro_F1=0.8313 BEST
+2026-11-09T16:25:43+08:00 INFO train batch 100/442 loss=0.3315
+2026-11-09T16:25:43+08:00 INFO train batch 200/442 loss=0.3201
+2026-11-09T16:25:43+08:00 INFO train batch 300/442 loss=0.3196
+2026-11-09T16:25:43+08:00 INFO train batch 400/442 loss=0.3221
+2026-11-09T16:25:43+08:00 INFO epoch=3/5 stage=head loss=0.3211 val_loss=0.4195 train=90.20% val=86.51% macro_F1=0.8476 BEST
+2026-11-09T16:25:43+08:00 INFO train batch 100/442 loss=0.2367
+2026-11-09T16:25:43+08:00 INFO train batch 200/442 loss=0.2718
+2026-11-09T16:25:44+08:00 INFO train batch 300/442 loss=0.2722
+2026-11-09T16:25:44+08:00 INFO train batch 400/442 loss=0.2722
+2026-11-09T16:25:44+08:00 INFO epoch=4/5 stage=head loss=0.2703 val_loss=0.3896 train=91.67% val=87.04% macro_F1=0.8483 BEST
+2026-11-09T16:25:44+08:00 INFO train batch 100/442 loss=0.2470
+2026-11-09T16:25:44+08:00 INFO train batch 200/442 loss=0.2277
+2026-11-09T16:25:44+08:00 INFO train batch 300/442 loss=0.2241
+2026-11-09T16:25:44+08:00 INFO train batch 400/442 loss=0.2223
+2026-11-09T16:25:45+08:00 INFO epoch=5/5 stage=head loss=0.2300 val_loss=0.3732 train=93.88% val=87.83% macro_F1=0.8548 BEST
+2026-11-09T16:25:45+08:00 INFO completed best_epoch=5 best_val=87.83% run_dir=results/efficientnet_b0/runs/A/mac_20261109

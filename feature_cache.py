@@ -27,7 +27,7 @@ class FlipFeatures(Dataset):
 def backbone_digest(model):
     digest = hashlib.sha256()
     for name, tensor in model.state_dict().items():
-        if not name.startswith("fc."):
+        if not name.startswith(("fc.", "network.classifier.")):
             digest.update(name.encode())
             digest.update(tensor.detach().cpu().numpy().tobytes())
     return digest.hexdigest()
@@ -49,13 +49,14 @@ def encode_dataset(extractor, dataset, batch_size, device, both_views, logger):
 
 
 def feature_datasets(model, config, audit, cache_dir, device, logger):
-    key = hashlib.sha256(("resnet18-224-imagenet-normalization-v1:" + backbone_digest(model)
+    key = hashlib.sha256((config.get("architecture", "resnet18") + "-224-imagenet-normalization-v1:" + backbone_digest(model)
         + audit["manifest_sha256"] + audit["dataset_sha256"]).encode()).hexdigest()
     cache_dir.mkdir(parents=True, exist_ok=True)
     path = cache_dir / f"{key}.pt"
     # 构建缓存所需的 DataLoader 不得改变后续训练的随机顺序。
     rng = torch.get_rng_state()
     cuda_rng = torch.cuda.get_rng_state_all() if device.type == "cuda" else None
+    mps_rng = torch.mps.get_rng_state() if device.type == "mps" else None
     try:
         if path.exists():
             cached = torch.load(path, map_location="cpu", weights_only=True)
@@ -65,7 +66,9 @@ def feature_datasets(model, config, audit, cache_dir, device, logger):
         else:
             logger.info("Building frozen-backbone feature cache; train original/flip + validation, no test images")
             model.eval()
-            extractor = nn.Sequential(*list(model.children())[:-1], nn.Flatten(1))
+            extractor = (nn.Sequential(model.network.features, model.network.avgpool, nn.Flatten(1))
+                         if config.get("architecture") == "efficientnet_b0" else
+                         nn.Sequential(*list(model.children())[:-1], nn.Flatten(1)))
             original, flipped, labels = encode_dataset(extractor, ManifestDataset("train", CLASSES),
                 config["batch_size"], device, True, logger)
             val_features, _, val_labels = encode_dataset(extractor, ManifestDataset("val", CLASSES),
@@ -82,6 +85,8 @@ def feature_datasets(model, config, audit, cache_dir, device, logger):
         torch.set_rng_state(rng)
         if cuda_rng is not None:
             torch.cuda.set_rng_state_all(cuda_rng)
+        if mps_rng is not None:
+            torch.mps.set_rng_state(mps_rng)
     train = FlipFeatures(cached["original"], cached["flipped"], cached["labels"], config["augmentation"])
     val = TensorDataset(cached["val_features"], cached["val_labels"])
     return train, val, key

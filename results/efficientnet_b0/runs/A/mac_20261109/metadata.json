@@ -1,0 +1,58 @@
+{
+  "experiment": "A",
+  "run_id": "mac_20261109",
+  "started_at": "2026-11-09T16:25:19+08:00",
+  "device": "mps",
+  "torch_version": "2.15.0",
+  "python_version": "3.13.16",
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "smoke_test": false,
+  "architecture": "efficientnet_b0",
+  "initialization": "ImageNet EfficientNet_B0_Weights.DEFAULT",
+  "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+  "manifest_hash_algorithm": "sha256-lf-v1",
+  "manifest_raw_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+  "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
+  "counts": {
+    "train": {
+      "cardboard": 283,
+      "glass": 348,
+      "metal": 287,
+      "paper": 416,
+      "plastic": 336,
+      "trash": 95
+    },
+    "val": {
+      "cardboard": 60,
+      "glass": 75,
+      "metal": 61,
+      "paper": 89,
+      "plastic": 72,
+      "trash": 21
+    },
+    "test": {
+      "cardboard": 60,
+      "glass": 75,
+      "metal": 61,
+      "paper": 89,
+      "plastic": 72,
+      "trash": 21
+    }
+  },
+  "code_sha256": {
+    "train.py": "243c8f48d754c94f969ca06749e14410d27e2669d297289db6440d76c3570c87",
+    "model.py": "9506dadbe74dd7f788053f7369c49521b7656d99101e7d65c63ddefc761d5723",
+    "evaluate.py": "02e8d2afc79bbc5e2c2294a50e30c315a7cd8422069936fe5fd4b24284494909",
+    "experiment_utils.py": "6021e42cae0afb0b793357f2163adef8947230beb02234e55598ec9b8f1b4db0",
+    "feature_cache.py": "a140016485be4f697237c203a1f3a3565754a6eafa6c3eef5135a7372f3895d4"
+  },
+  "code_lf_sha256": {
+    "train.py": "243c8f48d754c94f969ca06749e14410d27e2669d297289db6440d76c3570c87",
+    "model.py": "9506dadbe74dd7f788053f7369c49521b7656d99101e7d65c63ddefc761d5723",
+    "evaluate.py": "02e8d2afc79bbc5e2c2294a50e30c315a7cd8422069936fe5fd4b24284494909",
+    "experiment_utils.py": "6021e42cae0afb0b793357f2163adef8947230beb02234e55598ec9b8f1b4db0",
+    "feature_cache.py": "a140016485be4f697237c203a1f3a3565754a6eafa6c3eef5135a7372f3895d4"
+  },
+  "imagenet_weights_sha256": "7f5810bc96def8f7552d5b7e68d53c4786f81167d28291b21c0d90e1fca14934",
+  "feature_cache_key": "e6f878e74973f8a624b2b434b706f03e76353cda56006b40fcfea9e750af44c1"
+}

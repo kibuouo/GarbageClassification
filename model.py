@@ -120,6 +120,37 @@ class GarbageClassifier(ResNet):
         return self
 
 
-def build_model(num_classes=6, pretrained=False, freeze_backbone=False):
+class EfficientGarbageClassifier(nn.Module):
+    """EfficientNet-B0 with a six-class head and a trainable final feature block."""
+    def __init__(self, num_classes=6, pretrained=False, freeze_backbone=False):
+        super().__init__()
+        from torchvision.models import efficientnet_b0, EfficientNet_B0_Weights
+        self.network = efficientnet_b0(weights=EfficientNet_B0_Weights.DEFAULT if pretrained else None)
+        self.network.classifier[1] = nn.Linear(self.network.classifier[1].in_features, num_classes)
+        self.freeze_features(freeze_backbone)
+
+    @property
+    def fc(self):
+        return self.network.classifier
+
+    @property
+    def layer4(self):
+        return self.network.features[7:]
+
+    def freeze_features(self, freeze=True):
+        for parameter in self.network.features.parameters():
+            parameter.requires_grad_(not freeze)
+        for parameter in self.fc.parameters():
+            parameter.requires_grad_(True)
+
+    def forward(self, images):
+        return self.network(images)
+
+
+def build_model(num_classes=6, pretrained=False, freeze_backbone=False, architecture="resnet18"):
     """统一创建模型；默认随机初始化，页面随后加载本地训练权重。"""
+    if architecture == "efficientnet_b0":
+        return EfficientGarbageClassifier(num_classes, pretrained, freeze_backbone)
+    if architecture != "resnet18":
+        raise ValueError(f"Unknown architecture: {architecture}")
     return GarbageClassifier(num_classes, pretrained, freeze_backbone)

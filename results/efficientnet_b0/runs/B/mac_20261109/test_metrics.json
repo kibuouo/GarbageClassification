@@ -1,0 +1,3223 @@
+{
+  "samples": 378,
+  "accuracy": 0.8941798941798942,
+  "macro_f1": 0.8861858558166481,
+  "macro_precision": 0.8955308381430633,
+  "macro_recall": 0.8790106068624212,
+  "classes": [
+    "cardboard",
+    "glass",
+    "metal",
+    "paper",
+    "plastic",
+    "trash"
+  ],
+  "per_class": {
+    "cardboard": {
+      "support": 60,
+      "precision": 0.9482758620689655,
+      "recall": 0.9166666666666666,
+      "f1": 0.9322033898305084
+    },
+    "glass": {
+      "support": 75,
+      "precision": 0.8888888888888888,
+      "recall": 0.8533333333333334,
+      "f1": 0.8707482993197277
+    },
+    "metal": {
+      "support": 61,
+      "precision": 0.875,
+      "recall": 0.9180327868852459,
+      "f1": 0.8959999999999999
+    },
+    "paper": {
+      "support": 89,
+      "precision": 0.8817204301075269,
+      "recall": 0.9213483146067416,
+      "f1": 0.901098901098901
+    },
+    "plastic": {
+      "support": 72,
+      "precision": 0.8904109589041096,
+      "recall": 0.9027777777777778,
+      "f1": 0.896551724137931
+    },
+    "trash": {
+      "support": 21,
+      "precision": 0.8888888888888888,
+      "recall": 0.7619047619047619,
+      "f1": 0.8205128205128205
+    }
+  },
+  "confusion_matrix": [
+    [
+      55,
+      0,
+      0,
+      5,
+      0,
+      0
+    ],
+    [
+      0,
+      64,
+      3,
+      2,
+      6,
+      0
+    ],
+    [
+      0,
+      4,
+      56,
+      0,
+      1,
+      0
+    ],
+    [
+      3,
+      1,
+      1,
+      82,
+      1,
+      1
+    ],
+    [
+      0,
+      3,
+      2,
+      1,
+      65,
+      1
+    ],
+    [
+      0,
+      0,
+      2,
+      3,
+      0,
+      16
+    ]
+  ],
+  "confusion_matrix_axes": "rows=true, columns=predicted",
+  "split": "test",
+  "smoke_test": false,
+  "checkpoint_sha256": "d53a1d0e2c3e9149fbbeb9e8a727fd7850048f812c8beef1aa025c36f90b47ff",
+  "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+  "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
+  "manifest_hash_algorithm": "sha256-lf-v1",
+  "training_metadata": {
+    "experiment": "B",
+    "run_id": "mac_20261109",
+    "started_at": "2026-11-09T16:25:46+08:00",
+    "device": "mps",
+    "torch_version": "2.15.0",
+    "python_version": "3.13.16",
+    "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+    "smoke_test": false,
+    "architecture": "efficientnet_b0",
+    "initialization": "ImageNet EfficientNet_B0_Weights.DEFAULT",
+    "manifest_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+    "manifest_hash_algorithm": "sha256-lf-v1",
+    "manifest_raw_sha256": "17ae4d9a032b92cd483b84f84beb97aef85b5f208b34ab3029dd4155ba714aaa",
+    "dataset_sha256": "f709866624f3740fc048b14fa6892468ef2400353651e478748f70310c624cc7",
+    "counts": {
+      "train": {
+        "cardboard": 283,
+        "glass": 348,
+        "metal": 287,
+        "paper": 416,
+        "plastic": 336,
+        "trash": 95
+      },
+      "val": {
+        "cardboard": 60,
+        "glass": 75,
+        "metal": 61,
+        "paper": 89,
+        "plastic": 72,
+        "trash": 21
+      },
+      "test": {
+        "cardboard": 60,
+        "glass": 75,
+        "metal": 61,
+        "paper": 89,
+        "plastic": 72,
+        "trash": 21
+      }
+    },
+    "code_sha256": {
+      "train.py": "243c8f48d754c94f969ca06749e14410d27e2669d297289db6440d76c3570c87",
+      "model.py": "9506dadbe74dd7f788053f7369c49521b7656d99101e7d65c63ddefc761d5723",
+      "evaluate.py": "02e8d2afc79bbc5e2c2294a50e30c315a7cd8422069936fe5fd4b24284494909",
+      "experiment_utils.py": "6021e42cae0afb0b793357f2163adef8947230beb02234e55598ec9b8f1b4db0",
+      "feature_cache.py": "a140016485be4f697237c203a1f3a3565754a6eafa6c3eef5135a7372f3895d4"
+    },
+    "code_lf_sha256": {
+      "train.py": "243c8f48d754c94f969ca06749e14410d27e2669d297289db6440d76c3570c87",
+      "model.py": "9506dadbe74dd7f788053f7369c49521b7656d99101e7d65c63ddefc761d5723",
+      "evaluate.py": "02e8d2afc79bbc5e2c2294a50e30c315a7cd8422069936fe5fd4b24284494909",
+      "experiment_utils.py": "6021e42cae0afb0b793357f2163adef8947230beb02234e55598ec9b8f1b4db0",
+      "feature_cache.py": "a140016485be4f697237c203a1f3a3565754a6eafa6c3eef5135a7372f3895d4"
+    },
+    "imagenet_weights_sha256": "7f5810bc96def8f7552d5b7e68d53c4786f81167d28291b21c0d90e1fca14934",
+    "feature_cache_key": "e6f878e74973f8a624b2b434b706f03e76353cda56006b40fcfea9e750af44c1",
+    "config": {
+      "name": "B",
+      "description": "EfficientNet-B0 B: 20 epoch frozen-backbone control",
+      "epochs": 20,
+      "mode": "head",
+      "warmup_epochs": 0,
+      "head_lr": 0.001,
+      "layer4_lr": 0.0001,
+      "weight_decay": 0.01,
+      "batch_size": 4,
+      "accumulation_steps": 4,
+      "patience": 5,
+      "min_delta": 0.0,
+      "seed": 42,
+      "pretrained": true,
+      "threads": 2,
+      "augmentation": "horizontal_flip",
+      "freeze_bn_stats": true,
+      "cache_features": true,
+      "architecture": "efficientnet_b0"
+    },
+    "epoch": 11,
+    "validation_accuracy": 0.8835978835978836,
+    "validation_macro_f1": 0.8627840496705912,
+    "selection_split": "val",
+    "training_split": "train"
+  },
+  "provenance_note": "从已记录初始化出发，仅 train 参与训练、val 参与选模。",
+  "predictions": [
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard234.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.999560534954071
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard353.jpg",
+      "true": "cardboard",
+      "predicted": "paper",
+      "probability": 0.5440241694450378
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard135.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9700573682785034
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard273.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9995155334472656
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard156.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9972847700119019
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard346.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.7482804656028748
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard310.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9959279894828796
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard119.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9992526173591614
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard220.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9913416504859924
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard378.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9319361448287964
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard258.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9995771050453186
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard264.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9920358061790466
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard143.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.8041208982467651
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard274.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9863798022270203
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard82.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9854061603546143
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard90.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9941020607948303
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard254.jpg",
+      "true": "cardboard",
+      "predicted": "paper",
+      "probability": 0.9241039156913757
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard199.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9997336268424988
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard170.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9561697244644165
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard68.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.998695433139801
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard256.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9989462494850159
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard85.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9927582740783691
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard58.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9994338154792786
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard172.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.970684826374054
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard101.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9997784495353699
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard227.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.998553454875946
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard370.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.5610837340354919
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard305.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9996844530105591
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard20.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.999626636505127
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard292.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.99043208360672
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard88.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9841123223304749
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard6.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9997672438621521
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard399.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9983318448066711
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard66.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.999907374382019
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard190.jpg",
+      "true": "cardboard",
+      "predicted": "paper",
+      "probability": 0.9575919508934021
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard358.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9979156851768494
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard110.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.5437809228897095
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard377.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.971373975276947
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard331.jpg",
+      "true": "cardboard",
+      "predicted": "paper",
+      "probability": 0.7210227251052856
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard206.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9674848914146423
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard2.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9760357737541199
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard141.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9996428489685059
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard112.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9974724650382996
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard113.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9990004897117615
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard294.jpg",
+      "true": "cardboard",
+      "predicted": "paper",
+      "probability": 0.6953368186950684
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard371.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9997944235801697
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard139.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9991920590400696
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard350.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9996511936187744
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard96.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.998494029045105
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard48.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.99576735496521
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard146.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9978072047233582
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard76.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9998569488525391
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard163.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.7406430840492249
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard201.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.999862551689148
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard211.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9987659454345703
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard225.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.999006450176239
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard78.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9422409534454346
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard11.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9996920824050903
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard150.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.7396008372306824
+    },
+    {
+      "split": "test",
+      "class": "cardboard",
+      "filename": "cardboard394.jpg",
+      "true": "cardboard",
+      "predicted": "cardboard",
+      "probability": 0.9961211085319519
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass494.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.6901420950889587
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass440.jpg",
+      "true": "glass",
+      "predicted": "plastic",
+      "probability": 0.5900640487670898
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass41.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.8812929391860962
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass471.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.981486976146698
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass290.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9999439716339111
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass462.jpg",
+      "true": "glass",
+      "predicted": "plastic",
+      "probability": 0.7230879664421082
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass88.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9945569038391113
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass441.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9915797710418701
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass183.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.612804651260376
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass11.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.999622106552124
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass291.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9991570711135864
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass182.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9849562048912048
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass476.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9807102680206299
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass470.jpg",
+      "true": "glass",
+      "predicted": "plastic",
+      "probability": 0.6171264052391052
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass175.jpg",
+      "true": "glass",
+      "predicted": "metal",
+      "probability": 0.5149391293525696
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass21.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9962627291679382
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass171.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.8942983746528625
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass447.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.7566830515861511
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass387.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.7953585982322693
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass289.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.935623049736023
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass359.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9101594090461731
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass461.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.5343395471572876
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass264.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.8663510084152222
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass147.jpg",
+      "true": "glass",
+      "predicted": "paper",
+      "probability": 0.9186618328094482
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass409.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.6707193851470947
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass215.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.7169362902641296
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass416.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.929123044013977
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass198.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.8890724182128906
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass266.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9319299459457397
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass118.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9994131326675415
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass499.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9652405381202698
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass469.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9837480783462524
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass269.jpg",
+      "true": "glass",
+      "predicted": "plastic",
+      "probability": 0.6958397030830383
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass242.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9891974329948425
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass119.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9877766370773315
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass159.jpg",
+      "true": "glass",
+      "predicted": "metal",
+      "probability": 0.6694297194480896
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass3.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9657458066940308
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass168.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9553125500679016
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass80.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9956607222557068
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass37.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9977449178695679
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass271.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.8867543935775757
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass487.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9968838095664978
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass116.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9952661991119385
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass352.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9560806751251221
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass169.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.5287970304489136
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass67.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.998310923576355
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass42.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9901716113090515
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass58.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9867253303527832
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass134.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.8154902458190918
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass151.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9812535643577576
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass102.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.6294735074043274
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass36.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.8102155327796936
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass298.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9278079867362976
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass427.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.7184140682220459
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass355.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9986224174499512
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass304.jpg",
+      "true": "glass",
+      "predicted": "paper",
+      "probability": 0.37845271825790405
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass443.jpg",
+      "true": "glass",
+      "predicted": "metal",
+      "probability": 0.610261857509613
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass174.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.631004810333252
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass221.jpg",
+      "true": "glass",
+      "predicted": "plastic",
+      "probability": 0.7433528900146484
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass396.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.8951818943023682
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass16.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.698736846446991
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass457.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9437591433525085
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass254.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.5340449810028076
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass10.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.6542373299598694
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass12.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.5195436477661133
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass228.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9655025005340576
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass484.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9724173545837402
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass296.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9879466891288757
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass394.jpg",
+      "true": "glass",
+      "predicted": "plastic",
+      "probability": 0.40756678581237793
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass142.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9649234414100647
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass123.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.986478328704834
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass492.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.5946401953697205
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass69.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.99608314037323
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass68.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9915364980697632
+    },
+    {
+      "split": "test",
+      "class": "glass",
+      "filename": "glass216.jpg",
+      "true": "glass",
+      "predicted": "glass",
+      "probability": 0.9421589970588684
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal171.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8883002400398254
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal136.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9395856857299805
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal403.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8752285838127136
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal220.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9951310157775879
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal197.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9635154008865356
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal388.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9543191194534302
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal195.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9511471390724182
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal144.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9874045848846436
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal380.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9785600304603577
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal126.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9080628156661987
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal385.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.5059496164321899
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal361.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9841943383216858
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal24.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9809455871582031
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal297.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9208917021751404
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal370.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8024256229400635
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal236.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9970591068267822
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal302.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9695669412612915
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal306.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9861114025115967
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal274.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8971661925315857
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal34.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9818164110183716
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal202.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9794925451278687
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal384.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9464561343193054
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal374.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8434223532676697
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal379.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8223154544830322
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal291.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.7745437622070312
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal356.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8914031386375427
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal153.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9562224745750427
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal213.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9921423196792603
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal138.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.5901049375534058
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal239.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9902023077011108
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal359.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8697496056556702
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal168.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8927018642425537
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal169.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9349338412284851
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal123.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9799384474754333
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal46.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9881991147994995
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal39.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8925163745880127
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal365.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8038610219955444
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal132.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9242488145828247
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal93.jpg",
+      "true": "metal",
+      "predicted": "plastic",
+      "probability": 0.7364146113395691
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal284.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9125117063522339
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal129.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9839726686477661
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal151.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.7532352805137634
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal319.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9792546629905701
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal215.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9812051057815552
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal122.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8334097862243652
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal184.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9971925616264343
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal256.jpg",
+      "true": "metal",
+      "predicted": "glass",
+      "probability": 0.5070691704750061
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal301.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9995613694190979
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal32.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.980846107006073
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal315.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.7916279435157776
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal23.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.8462063074111938
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal363.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.6069755554199219
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal104.jpg",
+      "true": "metal",
+      "predicted": "glass",
+      "probability": 0.5783222317695618
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal146.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9079191088676453
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal325.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9996808767318726
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal77.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9846153855323792
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal393.jpg",
+      "true": "metal",
+      "predicted": "glass",
+      "probability": 0.472583144903183
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal157.jpg",
+      "true": "metal",
+      "predicted": "glass",
+      "probability": 0.9539394974708557
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal51.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9962869882583618
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal233.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.7744032144546509
+    },
+    {
+      "split": "test",
+      "class": "metal",
+      "filename": "metal354.jpg",
+      "true": "metal",
+      "predicted": "metal",
+      "probability": 0.9942423701286316
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper106.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9991301894187927
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper248.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9918465614318848
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper370.jpg",
+      "true": "paper",
+      "predicted": "plastic",
+      "probability": 0.5026577711105347
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper208.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9965468049049377
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper462.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.5885149240493774
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper463.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9016464948654175
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper429.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9981681108474731
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper112.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9807533621788025
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper22.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.855215847492218
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper122.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.5900940895080566
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper20.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9998337030410767
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper26.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9926754832267761
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper33.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9215511083602905
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper219.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.997584342956543
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper232.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9946147799491882
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper354.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9778711199760437
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper100.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9911824464797974
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper235.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9248815178871155
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper401.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9964444041252136
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper313.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9296683073043823
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper299.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9181225895881653
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper290.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9995086193084717
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper162.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.8606014251708984
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper289.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9865729808807373
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper214.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9829599857330322
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper323.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9420090913772583
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper406.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.8860073685646057
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper145.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.998556911945343
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper118.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9083887934684753
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper295.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9896491765975952
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper183.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9966062307357788
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper95.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9117841124534607
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper211.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.992414653301239
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper274.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9929835796356201
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper353.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.999423623085022
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper466.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.96251380443573
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper155.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9910776615142822
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper43.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9865080118179321
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper438.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9787369966506958
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper64.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9608493447303772
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper433.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.959328830242157
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper316.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9567565321922302
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper509.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9583830237388611
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper508.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.7480561137199402
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper3.jpg",
+      "true": "paper",
+      "predicted": "metal",
+      "probability": 0.5847415924072266
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper69.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9986538887023926
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper129.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9969301819801331
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper357.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9979971051216125
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper475.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9174088835716248
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper550.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.4119778871536255
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper190.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9665685892105103
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper481.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9957742094993591
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper241.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.8176194429397583
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper486.jpg",
+      "true": "paper",
+      "predicted": "cardboard",
+      "probability": 0.7795519232749939
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper62.jpg",
+      "true": "paper",
+      "predicted": "glass",
+      "probability": 0.39187750220298767
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper440.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9795235991477966
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper517.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9866839051246643
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper457.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9904661178588867
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper223.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9986245632171631
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper6.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.7049258947372437
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper315.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9888985753059387
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper189.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9979773163795471
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper205.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9002333879470825
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper553.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9951152801513672
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper38.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9984512329101562
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper133.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9255396127700806
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper140.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9986727237701416
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper228.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.5652137994766235
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper206.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9951750040054321
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper476.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.7089310884475708
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper378.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9917239546775818
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper527.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.7950708270072937
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper157.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9258882999420166
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper302.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9661120772361755
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper400.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.6522226929664612
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper81.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9955776929855347
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper121.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9928332567214966
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper533.jpg",
+      "true": "paper",
+      "predicted": "cardboard",
+      "probability": 0.42783451080322266
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper314.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.8895521759986877
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper199.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9681695103645325
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper441.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9763544797897339
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper450.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.999811589717865
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper340.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9435983300209045
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper439.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9972845315933228
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper518.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9997193217277527
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper212.jpg",
+      "true": "paper",
+      "predicted": "cardboard",
+      "probability": 0.6192529201507568
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper594.jpg",
+      "true": "paper",
+      "predicted": "trash",
+      "probability": 0.817753255367279
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper342.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9951039552688599
+    },
+    {
+      "split": "test",
+      "class": "paper",
+      "filename": "paper111.jpg",
+      "true": "paper",
+      "predicted": "paper",
+      "probability": 0.9523328542709351
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic234.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9649744629859924
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic166.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9776862859725952
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic431.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.988476037979126
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic210.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9518855810165405
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic366.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.716247022151947
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic338.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.8891078233718872
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic392.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.8470357060432434
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic106.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9854559302330017
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic348.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.6845669746398926
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic376.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9472470879554749
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic33.jpg",
+      "true": "plastic",
+      "predicted": "metal",
+      "probability": 0.6261985898017883
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic57.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9943919777870178
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic128.jpg",
+      "true": "plastic",
+      "predicted": "glass",
+      "probability": 0.9044659733772278
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic310.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9985311031341553
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic388.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9648151993751526
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic467.jpg",
+      "true": "plastic",
+      "predicted": "metal",
+      "probability": 0.8571010231971741
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic396.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9366746544837952
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic293.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9398662447929382
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic21.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.999703586101532
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic120.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9883258938789368
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic156.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.6576743125915527
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic239.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9964608550071716
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic209.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9547672271728516
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic232.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9769185185432434
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic459.jpg",
+      "true": "plastic",
+      "predicted": "paper",
+      "probability": 0.6452152132987976
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic15.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9985688924789429
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic295.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9808835983276367
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic344.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9894846081733704
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic381.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9985883831977844
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic436.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.8980261087417603
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic353.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9813389778137207
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic169.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.8967959880828857
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic51.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9937747716903687
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic2.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.7422090768814087
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic218.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9984263181686401
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic107.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.5462451577186584
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic135.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9705425500869751
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic100.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9662894606590271
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic385.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.7327579259872437
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic306.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9990699887275696
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic316.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9616764783859253
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic426.jpg",
+      "true": "plastic",
+      "predicted": "glass",
+      "probability": 0.4864422380924225
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic450.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.6317974328994751
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic164.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.8130459189414978
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic5.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.996487021446228
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic421.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9837781190872192
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic317.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9065333604812622
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic49.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9251939654350281
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic231.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.8586862087249756
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic116.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9740497469902039
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic163.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.8502508401870728
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic167.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9814901947975159
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic466.jpg",
+      "true": "plastic",
+      "predicted": "trash",
+      "probability": 0.3941752016544342
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic254.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9232687950134277
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic40.jpg",
+      "true": "plastic",
+      "predicted": "glass",
+      "probability": 0.994408369064331
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic43.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9606364369392395
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic53.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9175412654876709
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic144.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.6896814107894897
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic247.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9941260814666748
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic111.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.8725413084030151
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic202.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9963485598564148
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic93.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.8333655595779419
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic136.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9906672835350037
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic278.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9948379397392273
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic208.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9900437593460083
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic272.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9953548908233643
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic331.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9039235711097717
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic282.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9998772144317627
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic123.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.7655788064002991
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic291.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9970351457595825
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic110.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.9792789220809937
+    },
+    {
+      "split": "test",
+      "class": "plastic",
+      "filename": "plastic96.jpg",
+      "true": "plastic",
+      "predicted": "plastic",
+      "probability": 0.999360978603363
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash76.jpg",
+      "true": "trash",
+      "predicted": "paper",
+      "probability": 0.5142290592193604
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash59.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.8569915890693665
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash8.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.9679144620895386
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash67.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.9855449795722961
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash134.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.2801496982574463
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash42.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.9910394549369812
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash23.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.9756537079811096
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash111.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.887043297290802
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash96.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.9383382797241211
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash137.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.6187442541122437
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash18.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.8605947494506836
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash102.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.5126832723617554
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash85.jpg",
+      "true": "trash",
+      "predicted": "metal",
+      "probability": 0.5825149416923523
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash97.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.9483761191368103
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash89.jpg",
+      "true": "trash",
+      "predicted": "paper",
+      "probability": 0.6436233520507812
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash93.jpg",
+      "true": "trash",
+      "predicted": "paper",
+      "probability": 0.6399199366569519
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash92.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.6889408826828003
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash53.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.4984925091266632
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash44.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.9712995290756226
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash66.jpg",
+      "true": "trash",
+      "predicted": "metal",
+      "probability": 0.576793909072876
+    },
+    {
+      "split": "test",
+      "class": "trash",
+      "filename": "trash136.jpg",
+      "true": "trash",
+      "predicted": "trash",
+      "probability": 0.7603709697723389
+    }
+  ],
+  "run_dir": "/Users/kiko/Library/CloudStorage/OneDrive-个人/GarbageClassification/results/efficientnet_b0/runs/B/mac_20261109",
+  "epochs_trained": 16
+}

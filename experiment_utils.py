@@ -89,6 +89,8 @@ def load_config(path):
 
 
 def validate_config(config):
+    if config.get("architecture", "resnet18") not in ("resnet18", "efficientnet_b0"):
+        raise ValueError("unsupported architecture")
     if config["name"] not in ("A", "B", "C") or config["mode"] not in ("head", "layer4"):
         raise ValueError("实验名称必须为 A/B/C，mode 必须为 head/layer4。")
     for key in ("epochs", "batch_size", "accumulation_steps", "threads"):

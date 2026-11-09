@@ -1,0 +1,24 @@
+2026-11-09T16:25:59+08:00 INFO Reusing frozen-backbone feature cache: results/efficientnet_b0/cache/e6f878e74973f8a624b2b434b706f03e76353cda56006b40fcfea9e750af44c1.pt
+2026-11-09T16:25:59+08:00 INFO Experiment C device=mps train=1765 val=378 effective_batch=16 resume_epoch=1
+2026-11-09T16:26:00+08:00 INFO train batch 100/442 loss=1.3007
+2026-11-09T16:26:00+08:00 INFO train batch 200/442 loss=1.0892
+2026-11-09T16:26:00+08:00 INFO train batch 300/442 loss=0.9496
+2026-11-09T16:26:00+08:00 INFO train batch 400/442 loss=0.8329
+2026-11-09T16:26:00+08:00 INFO epoch=1/20 stage=head loss=0.8127 val_loss=0.5487 train=74.67% val=83.07% macro_F1=0.7981 BEST
+2026-11-09T16:26:00+08:00 INFO train batch 100/442 loss=0.4547
+2026-11-09T16:26:01+08:00 INFO train batch 200/442 loss=0.4251
+2026-11-09T16:26:01+08:00 INFO train batch 300/442 loss=0.4221
+2026-11-09T16:26:01+08:00 INFO train batch 400/442 loss=0.4168
+2026-11-09T16:26:01+08:00 INFO epoch=2/20 stage=head loss=0.4144 val_loss=0.4571 train=86.97% val=84.92% macro_F1=0.8313 BEST
+2026-11-09T16:26:01+08:00 INFO train batch 100/442 loss=0.3315
+2026-11-09T16:26:01+08:00 INFO train batch 200/442 loss=0.3201
+2026-11-09T16:26:01+08:00 INFO train batch 300/442 loss=0.3196
+2026-11-09T16:26:01+08:00 INFO train batch 400/442 loss=0.3221
+2026-11-09T16:26:02+08:00 INFO epoch=3/20 stage=head loss=0.3211 val_loss=0.4195 train=90.20% val=86.51% macro_F1=0.8476 BEST
+2026-11-09T16:26:04+08:00 INFO train batch 100/442 loss=0.2577
+2026-11-09T16:26:06+08:00 INFO train batch 200/442 loss=0.2987
+2026-11-09T16:26:09+08:00 INFO train batch 300/442 loss=0.3002
+2026-11-09T16:26:11+08:00 INFO train batch 400/442 loss=0.2870
+2026-11-09T16:26:14+08:00 INFO epoch=4/20 stage=layer4 loss=0.2797 val_loss=0.3639 train=90.54% val=86.24% macro_F1=0.8454
+2026-11-09T16:26:17+08:00 INFO train batch 100/442 loss=0.1829
+2026-11-09T16:26:19+08:00 INFO train batch 200/442 loss=0.1605

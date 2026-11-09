@@ -143,14 +143,16 @@ def train_experiment(config, run_dir, audit, device="auto", resume=False, stop_a
                         "device": str(device), "torch_version": str(torch.__version__),
                         "python_version": platform.python_version(), "platform": platform.platform(),
                         "smoke_test": bool(config.get("max_train_samples") or config.get("max_val_samples")),
-                        "initialization": "ImageNet ResNet18_Weights.DEFAULT" if config["pretrained"] else "random",
+                        "architecture": config.get("architecture", "resnet18"),
+                        "initialization": ("ImageNet EfficientNet_B0_Weights.DEFAULT" if config.get("architecture") == "efficientnet_b0" else "ImageNet ResNet18_Weights.DEFAULT") if config["pretrained"] else "random",
                         **audit, **snapshot_source(run_dir)}
             atomic_json(run_dir / "metadata.json", metadata)
         atomic_json(run_dir / "status.json", {"status": "running", "updated_at": now(), "resumed": resume})
-        model = build_model(len(CLASSES), pretrained=config["pretrained"] and not resume, freeze_backbone=True).to(device)
+        model = build_model(len(CLASSES), pretrained=config["pretrained"] and not resume, freeze_backbone=True, architecture=config.get("architecture", "resnet18")).to(device)
         if not resume and config["pretrained"]:
-            from torchvision.models import ResNet18_Weights
-            weights_file = Path(torch.hub.get_dir()) / "checkpoints" / ResNet18_Weights.DEFAULT.url.rsplit("/", 1)[-1]
+            from torchvision.models import ResNet18_Weights, EfficientNet_B0_Weights
+            weights = EfficientNet_B0_Weights.DEFAULT if config.get("architecture") == "efficientnet_b0" else ResNet18_Weights.DEFAULT
+            weights_file = Path(torch.hub.get_dir()) / "checkpoints" / weights.url.rsplit("/", 1)[-1]
             metadata["imagenet_weights_sha256"] = sha256(weights_file)
             atomic_json(run_dir / "metadata.json", metadata)
         optimizer = torch.optim.AdamW([
@@ -170,6 +172,8 @@ def train_experiment(config, run_dir, audit, device="auto", resume=False, stop_a
             random.setstate(last["python_rng"])
             if device.type == "cuda" and last.get("cuda_rng"):
                 torch.cuda.set_rng_state_all(last["cuda_rng"])
+            if device.type == "mps" and last.get("mps_rng") is not None:
+                torch.mps.set_rng_state(last["mps_rng"])
             # last 先提交、best 后提交；若中断发生在两者之间，可由 last 修复 best。
             if best_epoch == last_saved_epoch:
                 save_checkpoint(run_dir / "best.pth", {key: last[key] for key in ("model_state", "classes", "training_metadata")})
@@ -228,7 +232,8 @@ def train_experiment(config, run_dir, audit, device="auto", resume=False, stop_a
             save_checkpoint(run_dir / "last.pth", {**saved, "optimizer_state": optimizer.state_dict(), "epoch": epoch,
                 "best_epoch": best_epoch, "best_accuracy": best_accuracy, "stale": stale, "history": history,
                 "torch_rng": torch.get_rng_state(), "python_rng": random.getstate(),
-                "cuda_rng": torch.cuda.get_rng_state_all() if device.type == "cuda" else []})
+                "cuda_rng": torch.cuda.get_rng_state_all() if device.type == "cuda" else [],
+                "mps_rng": torch.mps.get_rng_state() if device.type == "mps" else None})
             last_saved_epoch = epoch
             if improved:
                 save_checkpoint(run_dir / "best.pth", saved)
@@ -256,7 +261,10 @@ def train_experiment(config, run_dir, audit, device="auto", resume=False, stop_a
     finally:
         for handler in handlers:
             logger.removeHandler(handler)
-            handler.close()
+            try:
+                handler.close()
+            except OSError as error:
+                print(f"警告：关闭训练日志失败，详细日志可能不完整：{error}", flush=True)
 
 
 def main():

@@ -19,6 +19,7 @@ data/raw/*
 checkpoints/*
 !checkpoints/README.md
 !checkpoints/best_resnet18.pth
+!checkpoints/best_efficientnet_b0.pth
 
 # 最终成果可放入 final/ 提交，其他运行产物保留在本地。
 results/*

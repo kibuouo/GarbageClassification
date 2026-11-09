@@ -1,6 +1,32 @@
 # 垃圾图像分类
 
-基于 ResNet-18 的六分类项目，包含 Streamlit 演示和可追溯的 A/B/C 对照实验。标签为纸板、玻璃、金属、纸张、塑料、其他垃圾，不直接对应生活垃圾四分类。
+基于 EfficientNet-B0 的六分类项目，保留 ResNet-18 历史实验，包含 Streamlit 演示和可追溯的 A/B/C 对照实验。标签为纸板、玻璃、金属、纸张、塑料、其他垃圾，不直接对应生活垃圾四分类。
+
+## EfficientNet-B0 新实验（Mac / Windows）
+
+项目同时支持 EfficientNet-B0 和历史 ResNet-18 检查点；旧 A/B/C 指标保留不变。EfficientNet-B0 的 A、B、C 配置分别在 `experiments/efficientnet_b0_A.json`、`experiments/efficientnet_b0_B.json` 和 `experiments/efficientnet_b0_C.json`。三组仍使用相同的固定划分、种子和预训练初始化。C 的微调部分是 EfficientNet-B0 的 `features[7:]`，并非 ResNet 的 `layer4`。先训练分类层，之后微调末端特征层；冻结阶段使用仅含训练集和验证集的特征缓存。
+
+Mac 上在项目根目录使用 `.venv/bin/python`，Windows 上使用 `.venv\Scripts\python.exe`。以下以 Mac 为例：
+
+```bash
+for name in A B C; do
+  .venv/bin/python train.py --config "experiments/efficientnet_b0_${name}.json" --output-root results/efficientnet_b0
+done
+.venv/bin/python evaluate.py --experiments A B C --results-root results/efficientnet_b0
+.venv/bin/python plot_results.py --results-root results/efficientnet_b0 --experiments A B C
+```
+
+每次训练单独存档；根据验证集准确率选取检查点，测试集只用于评价。原 A/B/C 结果和原页面权重继续保存在原位置。新结果仍使用原固定测试集，不能视为新盲测。
+
+本次 Mac MPS 正式训练结果（2026-11-09，固定种子 42）：
+
+| EfficientNet-B0 | 训练轮数 | 最佳轮次 | 验证准确率 | 测试准确率 | Macro-F1 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| A | 5 | 5 | 87.83% | 88.10% | 0.8644 |
+| B | 16（早停） | 11 | 88.36% | 89.42% | 0.8862 |
+| C | 20 | 18 | 92.33% | 91.80% | 0.9119 |
+
+页面使用按验证准确率选出的 C 组 `checkpoints/best_efficientnet_b0.pth`。实验的最佳权重、训练记录、详细指标和图表保存在 `results/efficientnet_b0/` 并随仓库提交；特征缓存和恢复用中间检查点不会提交。C 组文本日志从第 5 轮开始因文件写入超时而不完整，逐轮结构化历史、状态及检查点已保存。页面保留 ResNet 权重作为 EfficientNet 文件不存在时的回退。旧测试集此前已被查看，两种架构的结果都不是新盲测。
 
 ## 项目结构
 
@@ -22,7 +48,8 @@ GarbageClassification/
 │   ├── raw/dataset-resized/   # 原始图片
 │   └── split.csv             # 三组共用的固定划分
 ├── checkpoints/
-│   └── best_resnet18.pth      # 页面使用的权重
+│   ├── best_efficientnet_b0.pth # 页面优先使用的权重
+│   └── best_resnet18.pth      # 保留的历史权重
 ├── tests/test_experiments.py
 └── results/
     ├── runs/<A|B|C>/<run-id>/ # 每次运行独立保存，默认不提交中间文件
@@ -59,7 +86,7 @@ GarbageClassification/
 
 ![独立测试准确率对比](results/final/accuracy_comparison.png)
 
-C 相对 A 提高 10.32 个百分点。这是固定划分、单随机种子的比较，属于查看旧测试结果后按原配置进行的重训复核，不是新增盲测。详细说明见 [comparison_notes.md](results/final/comparison_notes.md)。三组最佳权重、实际训练源码及日志均已保存在 `results/final/`，可直接独立复算。页面已使用本次 C 组最佳权重，只有文件 SHA-256 与正式测试记录一致时才显示对应准确率。旧 `ppt_training` 原权重未找回，历史结果和精确恢复的训练源码保存在 [历史归档](results/archive/ppt_training/README.md)。
+C 相对 A 提高 10.32 个百分点。这是固定划分、单随机种子的比较，属于查看旧测试结果后按原配置进行的重训复核，不是新增盲测。详细说明见 [comparison_notes.md](results/final/comparison_notes.md)。三组最佳权重、实际训练源码及日志均已保存在 `results/final/`，可直接独立复算。上述是历史 ResNet-18 的结果。页面优先加载新的 EfficientNet-B0 权重；只有文件 SHA-256 与对应测试记录一致时才显示准确率。旧 `ppt_training` 原权重未找回，历史结果和精确恢复的训练源码保存在 [历史归档](results/archive/ppt_training/README.md)。
 
 | 实验 | 最大轮数 | 可训练部分 | 分类层学习率 | layer4 学习率 | 早停 |
 | --- | --- | --- | --- | --- | --- |

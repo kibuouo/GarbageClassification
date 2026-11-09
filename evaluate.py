@@ -112,14 +112,14 @@ def evaluate_checkpoint(path, split, batch_size, audit, max_samples=None, allow_
     if metadata:
         verify_data_identity(metadata, audit)
     dataset = limit_dataset(ManifestDataset(split, classes), max_samples)
-    model = build_model(len(classes))
+    model = build_model(len(classes), architecture=metadata.get("architecture", "resnet18"))
     model.load_state_dict(checkpoint["model_state"])
     del checkpoint
     print(f"Evaluating {len(dataset)} {split} images: {path}", flush=True)
     metrics, predictions = evaluate_model(model, DataLoader(dataset, batch_size=batch_size), classes)
     original = dataset.dataset if hasattr(dataset, "dataset") else dataset
     rows = [original.rows[i] for i in dataset.indices] if hasattr(dataset, "indices") else original.rows
-    known_source = metadata.get("initialization") in ("ImageNet ResNet18_Weights.DEFAULT", "random")
+    known_source = metadata.get("initialization") in ("ImageNet ResNet18_Weights.DEFAULT", "ImageNet EfficientNet_B0_Weights.DEFAULT", "random")
     metrics.update({
         "split": split, "smoke_test": smoke, "checkpoint_sha256": sha256(path),
         "manifest_sha256": audit["manifest_sha256"], "dataset_sha256": audit["dataset_sha256"],
