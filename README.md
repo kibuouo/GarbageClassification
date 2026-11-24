@@ -45,7 +45,7 @@ GarbageClassification/
 .\.venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-打开终端显示的本地地址，通常是 `http://localhost:8501`，上传或拍摄图片后点击“开始预测”。
+打开终端显示的本地地址，通常是 `http://localhost:8501`，上传或拍摄图片后点击“开始识别”。
 
 ## A/B/C 实验设计
 

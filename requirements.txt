@@ -1,5 +1,5 @@
 torch>=2.1
 torchvision>=0.16
 Pillow>=10.0
-streamlit>=1.41
+streamlit>=1.65
 matplotlib>=3.8
